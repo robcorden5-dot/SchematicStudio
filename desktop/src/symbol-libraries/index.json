@@ -1,0 +1,24 @@
+{
+  "libraries": [
+    {
+      "filename": "basic.json",
+      "libraryName": "Basic",
+      "symbolCount": 21
+    },
+    {
+      "filename": "hydraulic.json",
+      "libraryName": "Hydraulic",
+      "symbolCount": 38
+    },
+    {
+      "filename": "pneumatic.json",
+      "libraryName": "Pneumatic",
+      "symbolCount": 42
+    },
+    {
+      "filename": "sensors.json",
+      "libraryName": "Sensors",
+      "symbolCount": 57
+    }
+  ]
+}

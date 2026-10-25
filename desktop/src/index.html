@@ -1,0 +1,2707 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SchematicStudio</title>
+  <link rel="icon" type="image/svg+xml" href="images/studioLogo.svg">
+  <meta name="theme-color" content="#0f1720">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SchematicStudio">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <!-- Konva.js 2D Rendering Engine -->
+  <script src="desktop-shim.js"></script>
+  <script src="vendor/konva.min.js"></script>
+  <script>
+    // Light or dark: the saved choice, else the computer's setting. Set before the page paints so it never flashes.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("ss-theme"); } catch (e) { /* storage blocked */ }
+      if (t !== "light" && t !== "dark") t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+    function toggleTheme() {
+      var next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("ss-theme", next); } catch (e) { /* storage blocked */ }
+      var b = document.getElementById("themeToggleBtn");
+      if (b) { b.textContent = next === "light" ? "\u263E" : "\u2600"; b.title = next === "light" ? "Switch to dark mode" : "Switch to light mode"; }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      var b = document.getElementById("themeToggleBtn"), light = document.documentElement.getAttribute("data-theme") === "light";
+      if (b) { b.textContent = light ? "\u263E" : "\u2600"; b.title = light ? "Switch to dark mode" : "Switch to light mode"; }
+    });
+  </script>
+  <style>
+    /* ==========================================
+       DESIGN SYSTEM
+       ========================================== */
+    :root {
+      /* Fluent 2 neutral surface ramp (dark theme) */
+      --bg-canvas: #cbd5e1;
+      --bg-app: #202020;
+      --bg-panel: #292929;
+      --bg-panel-deep: #1b1b1b;
+      --bg-panel-raised: #333333;
+      --bg-field: #1f1f1f;
+      --border: #3d3d3d;
+      --border-light: #525252;
+      --text: #ffffff;
+      --text-muted: #c8c8c8;
+      --text-faint: #9c9c9c;
+
+      /* Fluent brand ramp ("Communication Blue") plus semantic status colors */
+      --accent: #479ef5;
+      --primary: #0078d4;
+      --primary-hover: #106ebe;
+      --primary-pressed: #005a9e;
+      --success: #0e7a0d;
+      --success-hover: #0c680c;
+      --danger: #c42b1c;
+      --danger-hover: #a4262c;
+      --warning: #9d5d00;
+      --warning-hover: #835400;
+      --purple: #8764b8;
+      --purple-hover: #744da9;
+      --teal: #00b7c3;
+      --teal-hover: #0099a3;
+
+      /* Fluent 2 corner radius scale */
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+
+      /* Fluent 2 ambient+key shadow pairs (approximated for CSS) */
+      --shadow-md: 0 1.6px 3.6px rgba(0,0,0,0.30), 0 0.3px 0.9px rgba(0,0,0,0.22);
+      --shadow-lg: 0 6.4px 14.4px rgba(0,0,0,0.36), 0 1.2px 3.6px rgba(0,0,0,0.26);
+
+      color-scheme: dark;
+      --ov-05: var(--ov-05); --ov-07: var(--ov-07); --ov-09: var(--ov-09); --ov-14: var(--ov-14);
+      --btn-hover: #3d3d3d; --btn-active: #2b2b2b; --field-hover: #6b6b6b;
+      --ok: #4ade80; --err: #f87171; --warn: #fb923c; --info: #38bdf8; --faint-2: #9ca3af;
+      --font: "Segoe UI Variable", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+
+    /* Light mode: the same names, a light set of values. Chosen with the sun/moon button in the top bar. */
+
+    :root[data-theme="light"] {
+
+      color-scheme: light;
+
+      --bg-canvas: #d5dce6;
+
+      --bg-app: #f3f3f3;
+
+      --bg-panel: #ffffff;
+
+      --bg-panel-deep: #ebebeb;
+
+      --bg-panel-raised: #ffffff;
+
+      --bg-field: #f5f5f5;
+
+      --border: #d1d1d1;
+
+      --border-light: #c2c2c2;
+
+      --text: #242424;
+
+      --text-muted: #4d4d4d;
+
+      --text-faint: #6b6b6b;
+
+      --accent: #0f6cbd;
+
+      --ov-05: rgba(0,0,0,0.04); --ov-07: rgba(0,0,0,0.06); --ov-09: rgba(0,0,0,0.08); --ov-14: rgba(0,0,0,0.12);
+
+      --btn-hover: #ececec; --btn-active: #e0e0e0; --field-hover: #8a8a8a;
+
+      --ok: #0e7a0d; --err: #c42b1c; --warn: #b45309; --info: #0369a1; --faint-2: #6b7280;
+
+      --shadow-md: 0 1.6px 3.6px rgba(0,0,0,0.12), 0 0.3px 0.9px rgba(0,0,0,0.10);
+
+      --shadow-lg: 0 6.4px 14.4px rgba(0,0,0,0.16), 0 1.2px 3.6px rgba(0,0,0,0.12);
+
+    }
+
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      overflow: hidden;
+      background-color: var(--bg-app);
+      color: var(--text);
+    }
+    #app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* ==========================================
+       BUTTONS (Fluent: Secondary / Accent / Subtle appearances)
+       ========================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-panel-raised);
+      color: var(--text);
+      border: 1px solid var(--border-light);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      line-height: 1.3;
+      transition: background 0.1s ease-out, border-color 0.1s ease-out;
+    }
+    .btn:hover { background: var(--btn-hover); border-color: var(--field-hover); }
+    .btn:active { background: var(--btn-active); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    .btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+    .btn-primary:active { background: var(--primary-pressed); border-color: var(--primary-pressed); }
+
+    .btn-success { background: var(--success); border-color: var(--success); color: #fff; }
+    .btn-success:hover { background: var(--success-hover); border-color: var(--success-hover); }
+
+    .btn-danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+    .btn-danger:hover { background: var(--danger-hover); border-color: var(--danger-hover); }
+
+    .btn-warning { background: var(--warning); border-color: var(--warning); color: #fff; }
+    .btn-warning:hover { background: var(--warning-hover); border-color: var(--warning-hover); }
+
+    .btn-purple { background: var(--purple); border-color: var(--purple); color: #fff; }
+    .btn-purple:hover { background: var(--purple-hover); border-color: var(--purple-hover); }
+
+    .btn-teal { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .btn-teal:hover { background: var(--teal-hover); border-color: var(--teal-hover); }
+
+    .btn-ghost { background: transparent; border: 1px solid transparent; color: var(--text); }
+    .btn-ghost:hover { background: var(--ov-07); border-color: var(--border-light); }
+
+    .btn-icon {
+      background: transparent; border: none; color: var(--text-muted);
+      font-size: 16px; line-height: 1; cursor: pointer; padding: 4px 6px; border-radius: var(--radius-sm);
+      transition: background 0.1s ease-out, color 0.1s ease-out;
+    }
+    .btn-icon:hover { color: var(--text); background: var(--ov-09); }
+    .btn-icon:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    /* ==========================================
+       TOOLBAR: Quick Access Toolbar + tabbed Ribbon (Office-style)
+       ========================================== */
+    #toolbar {
+      background: var(--bg-panel);
+      color: var(--text);
+      z-index: 10;
+      box-shadow: var(--shadow-md);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--text);
+      padding-right: 12px;
+      margin-right: 2px;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .toolbar-spacer { flex: 1 1 auto; }
+    #toolbar label { font-size: 11.5px; color: var(--text-muted); white-space: nowrap; }
+    #toolbar select, #toolbar input {
+      background: var(--bg-field);
+      color: var(--text);
+      border: 1px solid var(--border-light);
+      padding: 5px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-family: inherit;
+      transition: border-color 0.1s ease-out;
+    }
+    #toolbar select:hover, #toolbar input:hover { border-color: var(--field-hover); }
+    #toolbar select:focus, #toolbar input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    #autosaveIndicator { font-size: 11px; color: var(--text-faint); white-space: nowrap; }
+
+    /* Quick Access Toolbar — always-visible slim strip, matching Office's QAT */
+    #qat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 14px;
+      background: var(--bg-panel-deep);
+      border-bottom: 1px solid var(--border);
+    }
+    .qat-group { display: flex; align-items: center; gap: 2px; }
+    .qat-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1;
+      padding: 5px 8px;
+      cursor: pointer;
+      transition: background 0.1s ease-out, border-color 0.1s ease-out;
+    }
+    .qat-btn:hover { background: var(--ov-07); border-color: var(--border-light); }
+    .qat-btn:active { background: var(--ov-14); }
+    .qat-btn:disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+    .qat-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    /* Ribbon tab strip */
+    .ribbon-tabs {
+      display: flex;
+      gap: 2px;
+      padding: 0 14px;
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+    }
+    .ribbon-tab {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 7px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+    }
+    .ribbon-tab:hover { color: var(--text); background: var(--ov-05); }
+    .ribbon-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+    .ribbon-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+    /* Ribbon content: a row of labeled groups, Office-style icon-over-label buttons */
+    .ribbon-content {
+      display: none;
+      align-items: stretch;
+      padding: 6px 14px;
+      background: var(--bg-panel-raised);
+      gap: 2px;
+      overflow-x: auto;
+    }
+    .ribbon-content.active { display: flex; }
+    .ribbon-group { display: flex; flex-direction: column; align-items: center; padding: 0 4px; }
+    .ribbon-group-buttons { display: flex; align-items: stretch; gap: 2px; flex: 1; }
+    .ribbon-group-label { font-size: 10px; color: var(--text-faint); margin-top: 3px; white-space: nowrap; }
+    .ribbon-divider { width: 1px; background: var(--border); margin: 2px 8px; align-self: stretch; }
+
+    .ribbon-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      padding: 6px 9px;
+      min-width: 58px;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text);
+      transition: background 0.1s ease-out, border-color 0.1s ease-out;
+    }
+    .ribbon-btn:hover { background: var(--ov-07); border-color: var(--border-light); }
+    .ribbon-btn:active { background: var(--ov-14); }
+    .ribbon-btn:disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+    .ribbon-btn-toggled-on { background: rgba(37,99,235,0.12); border-color: var(--accent); }
+    .ribbon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .ribbon-btn-icon { font-size: 18px; line-height: 1; }
+    .ribbon-btn-label { font-size: 10.5px; font-weight: 600; line-height: 1.2; text-align: center; white-space: nowrap; }
+    .ribbon-btn-danger .ribbon-btn-icon { filter: hue-rotate(0deg); }
+    .ribbon-btn-danger:hover { background: rgba(196, 43, 28, 0.16); border-color: var(--danger); }
+
+    /* A labelled dropdown that sits in a ribbon group alongside the buttons */
+    .ribbon-field { display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 0 8px; }
+    .ribbon-field label { font-size: 10.5px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+    .ribbon-select {
+      background: var(--bg-field); color: var(--text); border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm); padding: 4px 6px; font-family: inherit; font-size: 11px; cursor: pointer;
+    }
+    .ribbon-select:hover { border-color: var(--accent); }
+    .ribbon-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    /* ==========================================
+       MAIN LAYOUT
+       ========================================== */
+    #main-body { flex: 1; display: flex; position: relative; overflow: hidden; }
+
+    #sidebar {
+      width: 294px; /* was 226px — 30% wider */
+      background: var(--bg-panel-deep);
+      color: var(--text);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+      gap: 14px;
+      z-index: 5;
+      overflow-y: auto;
+    }
+    /* The symbol search stays at the top while the list below it scrolls. */
+    #sidebar .sidebar-search { position: sticky; top: -14px; z-index: 3; margin: -14px -14px -4px; padding: 14px 14px 10px; background: var(--bg-panel-deep); }
+    #sidebar h3 {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px;
+    }
+    #sidebar .section { display: flex; flex-direction: column; gap: 6px; }
+    .symbol-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: grab;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: border-color 0.1s ease-out, background 0.1s ease-out;
+    }
+    .symbol-item:hover { border-color: var(--accent); background: var(--bg-panel-raised); }
+    .symbol-item:active { cursor: grabbing; }
+    /* One collapsible group per library (My Symbols, Basic, Siemens, ...) inside Custom Symbols. */
+    .symbol-library-section { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+    .symbol-library-header {
+      display: flex; align-items: baseline; gap: 2px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--text-muted); cursor: pointer; user-select: none; margin: 4px 0 0;
+    }
+    .symbol-library-header:hover { color: var(--text); }
+    .symbol-library-chevron { font-size: 10px; width: 10px; display: inline-block; }
+    .symbol-library-count { font-weight: 400; color: var(--text-faint); text-transform: none; letter-spacing: normal; }
+    .symbol-library-items { display: flex; flex-direction: column; gap: 6px; }
+    .symbol-empty-hint { font-size: 11.5px; line-height: 1.4; color: var(--text-faint); margin: 6px 0 0; }
+    .browse-library-row {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      padding: 9px 2px; border-bottom: 1px solid var(--border-light); font-size: 13px;
+    }
+    .browse-library-row:last-child { border-bottom: none; }
+    /* A picture of the symbol beside its name. Drawn dark-on-white like the sheet itself, so
+       it reads the same whichever theme the sidebar is in. */
+    .symbol-item-main { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1 1 auto; }
+    .symbol-thumb {
+      flex: 0 0 auto; width: 66px; height: 46px;
+      display: flex; align-items: center; justify-content: center;
+      background: #ffffff; border: 1px solid var(--border); border-radius: 4px;
+      pointer-events: none; /* so a drag started on the picture is a drag of the whole row */
+    }
+    .symbol-thumb svg { display: block; }
+    .symbol-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .sb-head { cursor: pointer; user-select: none; }
+    .sb-chev { display: inline-block; width: 12px; font-size: 10px; }
+    .builtin-group-head { cursor: pointer; user-select: none; }
+    #sidebar > .section.sb-collapsed > :not(h3) { display: none; }
+    #builtin-symbols-list > .sb-grp-collapsed { display: none; }
+    .symbol-library-section.lib-collapsed > .symbol-library-items { display: none; }
+    #sidebar.sb-searching .symbol-library-section.lib-collapsed > .symbol-library-items { display: flex; }
+    #sidebar.sb-searching > .section.sb-collapsed > :not(h3) { display: revert; }
+    #sidebar.sb-searching #builtin-symbols-list > .sb-grp-collapsed { display: flex; }
+    .builtin-group-head { font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-faint); padding: 8px 4px 2px; }
+    .symbol-name-note { font-size: 0.8em; font-style: italic; color: var(--text-muted); margin-left: 4px; }
+    .sidebar-btn-row { display: flex; gap: 6px; }
+    .sidebar-btn-row .btn { flex: 1; justify-content: center; font-size: 11.5px; padding: 6px 8px; }
+
+    #canvas-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-canvas);
+    }
+
+    /* ==========================================
+       TABS (Fluent TabList-style: underline indicator on the active tab)
+       ========================================== */
+    #tab-bar {
+      height: 40px;
+      background: var(--bg-panel-deep);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      gap: 2px;
+      z-index: 10;
+      border-top: 1px solid var(--border);
+    }
+    .tab {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px 16px 7px;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid transparent;
+      transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+    }
+    .tab:hover { color: var(--text); background: var(--ov-05); }
+    .tab.active { background: var(--bg-panel); color: var(--text); border-bottom-color: var(--accent); }
+    .tab .close-btn {
+      font-size: 10px; color: var(--text-faint); border-radius: 50%;
+      width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;
+      transition: background 0.1s ease-out, color 0.1s ease-out;
+    }
+    .tab .close-btn:hover { background: var(--danger); color: #fff; }
+    .tab { flex: none; white-space: nowrap; }
+    .tab.dragging, .portfolio-row.dragging { opacity: .45; }
+    .tab.drop-before, .portfolio-row.drop-before { box-shadow: inset 3px 0 0 var(--accent); }
+    .tab.drop-after, .portfolio-row.drop-after { box-shadow: inset -3px 0 0 var(--accent); }
+    .portfolio-row.drop-before { box-shadow: inset 0 3px 0 var(--accent); }
+    .portfolio-row.drop-after { box-shadow: inset 0 -3px 0 var(--accent); }
+    #tab-bar .btn, #add-tab-btn { flex: none; white-space: nowrap; }
+    .plc-list { max-height: 28vh; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 4px; }
+    .plc-row { display: flex; gap: 4px; margin-bottom: 3px; }
+    .modal-card .plc-row input { margin: 0; padding: 3px 6px; height: auto; font-size: 12px; box-sizing: border-box; }
+    .modal-card .plc-row input.plc-addr { flex: none; width: 76px; }
+    .modal-card .plc-row select.plc-kind { flex: none; width: 112px; margin: 0; padding: 3px 4px; font-size: 12px; box-sizing: border-box; }
+    .modal-card .plc-row input, .modal-card .plc-row select { height: 28px; line-height: 20px; }
+    .modal-card .plc-row select.plc-suptype { width: 130px; }
+    .modal-card .plc-row select.plc-dir { width: 70px; }
+    .modal-card .plc-row input.plc-fn { flex: 1 1 0; width: auto; min-width: 0; }
+    .plc-grip { flex: none; width: 14px; display: flex; align-items: center; justify-content: center; cursor: grab; color: var(--text-muted, #94a3b8); font-size: 11px; letter-spacing: -2px; user-select: none; }
+    .plc-grip:active { cursor: grabbing; }
+    .plc-row.plc-dragging { opacity: .4; }
+    .plc-row.plc-drop-above { box-shadow: 0 -2px 0 0 #2563eb; }
+    .plc-row.plc-drop-below { box-shadow: 0 2px 0 0 #2563eb; }
+    .modal-card select.plc-add { margin: 4px 0 0; padding: 4px 6px; height: auto; font-size: 12px; width: 100%; box-sizing: border-box; }
+    .plc-list.plc-drop-end { outline: 2px dashed #2563eb; outline-offset: -2px; }
+    .plc-list { min-height: 34px; }
+    .plc-row-supply { background: rgba(37,99,235,.08); border-radius: 4px; }
+    .modal-card .plc-row input.grp-sel { flex: none; width: 16px; height: 16px; margin: 6px 2px 0 0; padding: 0; }
+    .grp-badge { flex: none; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; font-weight: 600; color: #2563eb; align-self: center; }
+    .tbm-list { max-height: 20vh; min-height: 90px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    .tbm-row { padding: 6px 10px; border-bottom: 1px solid var(--border); cursor: pointer; }
+    .tbm-row:last-child { border-bottom: none; }
+    .tbm-row:hover { background: var(--ov-07); }
+    .tbm-row-main { font-size: 12px; font-weight: 600; }
+    .tbm-row-sub { font-size: 11px; color: var(--text-faint); }
+    .portfolio-list { max-height: 46vh; overflow-y: auto; margin: 8px 0; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    .tab-group { flex: none; display: flex; align-items: center; padding: 4px 10px; margin: 0 2px; border-radius: 12px; font-size: 11px; font-weight: 700; cursor: pointer; user-select: none; white-space: nowrap; color: var(--group-colour, var(--accent)); border: 1px solid var(--group-colour, var(--accent)); }
+    .tab-group:hover { background: var(--ov-05); }
+    .portfolio-group-head { display: flex; align-items: center; justify-content: space-between; padding: 5px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); background: var(--ov-05); border-bottom: 1px solid var(--border); }
+    .portfolio-section { display: flex; align-items: center; gap: 6px; padding: 5px 10px 5px 6px; background: var(--ov-05); border-bottom: 1px solid var(--border); font-size: 12px; cursor: grab; }
+    .portfolio-section.folded { opacity: .85; }
+    .portfolio-section.drop-into, .portfolio-toplevel.drop-into { outline: 2px solid var(--accent); outline-offset: -2px; background: rgba(71, 158, 245, 0.14); }
+    .portfolio-chev { flex: none; width: 20px; padding: 0; border: 0; background: none; color: var(--text-faint); cursor: pointer; font-size: 13px; }
+    .portfolio-section-name { flex: 1; min-width: 0; font-weight: 700; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .portfolio-section-count { flex: none; font-size: 11px; color: var(--text-faint); }
+    .portfolio-section .portfolio-section-btn { flex: none; padding: 1px 8px; font-size: 11px; margin: 0; }
+    .portfolio-toplevel { display: none; padding: 8px; text-align: center; font-size: 11px; color: var(--text-faint); border-top: 1px dashed var(--border); }
+    .portfolio-list.dragging-section .portfolio-toplevel { display: block; }
+    .portfolio-group-head .btn { padding: 1px 8px; font-size: 11px; }
+    .cable-term { display: inline-block; background: rgba(100,116,139,.18); border-radius: 3px; padding: 0 4px; font-weight: 600; }
+    .review-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; align-self: center; }
+    .modal-card .portfolio-row .portfolio-review { flex: none; width: 134px; margin: 0; padding: 3px 6px; font-size: 12px; }
+    .modal-card .portfolio-row .portfolio-review.set { font-weight: 600; }
+    .portfolio-filter { display: flex; gap: 8px; margin-bottom: 6px; }
+    .modal-card .portfolio-filter select { flex: none; width: 150px; margin: 0; }
+    .modal-card .portfolio-filter input { flex: 1; margin: 0; }
+    .portfolio-ref { color: var(--accent); font-weight: 700; margin-right: 6px; }
+    .modal-card .portfolio-row .portfolio-group-input { flex: none; width: 118px; margin: 0; padding: 3px 6px; font-size: 12px; }
+    .find-results { max-height: 50vh; overflow: auto; border: 1px solid var(--border-light); border-radius: var(--radius-md); }
+    .find-results:empty { display: none; }
+    .find-row { display: flex; align-items: baseline; gap: 10px; padding: 7px 10px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 13px; color: var(--text); }
+    .find-row:last-child { border-bottom: none; }
+    .find-row:hover, .find-row-active { background: rgba(71, 158, 245, 0.12); }
+    .find-kind { flex: none; width: 70px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); }
+    .find-main { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .find-detail { color: var(--text-faint); font-size: 12px; }
+    .find-where { flex: none; font-size: 11px; color: var(--accent); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .portfolio-row { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-bottom: 1px solid var(--border); }
+    .portfolio-row:last-child { border-bottom: none; }
+    .portfolio-row.active { background: rgba(71, 158, 245, 0.10); }
+    .portfolio-row input[type="checkbox"] { flex: none; width: auto; margin: 0; }
+    .portfolio-text { flex: 1; min-width: 0; cursor: pointer; }
+    .portfolio-text:hover .portfolio-name { color: var(--accent); }
+    .portfolio-name { font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .portfolio-sub { font-size: 11px; color: var(--text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #add-tab-btn {
+      background: transparent; color: var(--accent); border: 1px solid transparent;
+      padding: 6px 12px; border-radius: var(--radius-sm); cursor: pointer; font-size: 12px; font-weight: 600;
+      font-family: inherit; transition: background 0.1s ease-out;
+    }
+    #add-tab-btn:hover { background: rgba(71, 158, 245, 0.12); }
+
+    /* ==========================================
+       MODALS (Fluent Dialog)
+       ========================================== */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.5); display: none; justify-content: center;
+      align-items: center; z-index: 1000;
+    }
+    .modal-card {
+      background: var(--bg-panel); color: var(--text); width: 640px; border-radius: var(--radius-lg);
+      padding: 24px; box-shadow: var(--shadow-lg); border: 1px solid var(--border);
+    }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+    }
+    .modal-header h3 { margin: 0; color: var(--text); font-size: 18px; font-weight: 600; }
+    .tbd-card { width: 1040px; max-width: 96vw; max-height: 94vh; overflow-y: auto; }
+    .tbd-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+    .tbd-bar label { margin: 0; display: flex; align-items: center; gap: 6px; }
+    .modal-card .tbd-bar select { width: auto; flex: 0 0 auto; }
+    .tbd-files { margin-bottom: 6px; }
+    .tbt-save { display: flex; gap: 8px; }
+    .tbt-row { display: flex; align-items: center; gap: 6px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .tbt-name { flex: 1 1 auto; min-width: 0; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tbt-name span { display: block; font-size: 11px; font-weight: 400; color: var(--text-muted); }
+    .modal-card .tbt-row .btn { padding: 5px 9px; }
+    .tbd-sep { width: 1px; height: 22px; background: var(--border); }
+    .tbd-main { display: flex; gap: 16px; align-items: flex-start; }
+    .tbd-canvas { flex: 1 1 auto; min-width: 0; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px; overflow: auto; }
+    .tbd-canvas svg { display: block; background: #fff; border-radius: 4px; user-select: none; }
+    .tbd-note { margin-top: 8px; font-size: 13px; color: var(--text-muted); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .tbd-props { flex: 0 0 270px; max-height: 60vh; overflow-y: auto; }
+    .tbd-props label { margin-top: 6px; }
+    .modal-card .tbd-props input[type=number], .modal-card .tbd-props input[type=text], .modal-card .tbd-props select { width: 100%; }
+    .tbd-h3 { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin: 12px 0 2px; }
+    .tbd-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tbd-checks { display: flex; flex-direction: column; gap: 4px; justify-content: flex-end; }
+    .tbd-check { display: flex; align-items: center; gap: 6px; font-weight: 500; }
+    .modal-card .tbd-check input { width: auto; margin: 0; }
+    .modal-card .tbd-bar .btn { padding: 6px 10px; }
+    .tbd-h { fill: #2563eb; stroke: #fff; stroke-width: .8; cursor: nwse-resize; }
+    @media (max-width: 860px) { .tbd-main { flex-direction: column; } .tbd-props { flex-basis: auto; width: 100%; } }
+    .modal-subhead { margin: 16px 0 6px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 10px; }
+    .modal-subhead span { text-transform: none; letter-spacing: 0; font-weight: 500; }
+    .modal-hint { font-size: 12px; color: var(--text-muted); margin: 4px 0 8px; }
+    .modal-card label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+    .modal-card input:not([type="checkbox"]), .modal-card select, .modal-card textarea {
+      width: 100%; background: var(--bg-field); border: 1px solid var(--border-light); color: var(--text);
+      padding: 7px 10px; border-radius: var(--radius-sm); font-size: 13px; margin-bottom: 10px; font-family: inherit;
+      transition: border-color 0.1s ease-out;
+    }
+    .modal-card input:not([type="checkbox"]):hover, .modal-card select:hover, .modal-card textarea:hover { border-color: var(--field-hover); }
+    .modal-card input:not([type="checkbox"]):focus, .modal-card select:focus, .modal-card textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    /* Checkboxes keep their native size/shape — the rule above was stretching them
+       to width:100% and adding text-field padding, which is what threw off their
+       alignment next to a label. */
+    .modal-card input[type="checkbox"] { width: auto; margin: 0; accent-color: var(--accent); }
+    /* Same for radio buttons: native size, sitting beside their text. */
+    .modal-card input[type="radio"] { width: auto; margin: 0; padding: 0; accent-color: var(--accent); }
+    .terminal-kind-row { display: flex; gap: 18px; margin-bottom: 12px; }
+    .terminal-two-col { display: flex; gap: 12px; }
+    .terminal-two-col > div { min-width: 0; }
+    .modal-card label.terminal-kind-option { display: flex; align-items: center; gap: 6px; margin: 0; font-size: 13px; font-weight: 500; color: var(--text); cursor: pointer; }
+    .modal-hint { font-size: 11px; color: var(--text-faint); line-height: 1.45; margin: 0 0 10px 0; }
+    .modal-row { display: flex; gap: 10px; }
+    .modal-row > div { flex: 1; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px; }
+    .modal-checkbox-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .modal-checkbox-row label { margin-bottom: 0; }
+
+    .bom-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .bom-table thead { position: sticky; top: 0; background: var(--bg-panel-deep); }
+    .bom-table th { padding: 8px; text-align: left; border-bottom: 1px solid var(--border-light); color: var(--text-muted); font-weight: 600; }
+    .bom-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+
+    .cable-core-chip {
+      display: inline-flex; align-items: center; gap: 3px;
+      border-radius: 3px; padding: 1px 5px; margin: 1px; font-size: 10px; white-space: nowrap;
+    }
+    .cable-core-chip-assigned { background: var(--bg-field); border: 1px solid var(--border-light); color: var(--text); }
+    .cable-core-chip-assigned span { cursor: pointer; color: var(--danger); font-weight: 700; }
+    .cable-core-chip-assigned span:hover { color: #ff8a80; }
+    /* Panel Layout box, over the canvas on a panel sheet */
+    #panelDock { display:none; position:absolute; top:10px; right:14px; width:330px; max-height:calc(100% - 28px); z-index:6; background:var(--bg-panel-raised); color:var(--text); border:1px solid var(--border); border-radius:var(--radius-md); box-shadow:0 6px 24px rgba(0,0,0,.35); font-size:12px; display:none; flex-direction:column; overflow:hidden; }
+    #panelDock .pd-head { display:flex; align-items:center; gap:6px; padding:8px 10px; border-bottom:1px solid var(--border-light); font-size:13px; }
+    #panelDock .pd-body { overflow:auto; padding:6px 10px 10px; max-height:calc(100vh - 220px); }
+    #panelDock .pd-sec { padding:8px 0; border-bottom:1px solid var(--border-light); }
+    #panelDock .pd-row { display:flex; align-items:center; gap:6px; margin:4px 0; }
+    #panelDock .pd-row select, #panelDock .pd-row input { flex:1; min-width:0; padding:3px 4px; font-size:12px; margin:0; width:auto; }
+    #panelDock label { margin:0; font-size:11px; color:var(--text-faint); white-space:nowrap; }
+    #panelDock button { cursor:pointer; background:transparent; color:var(--text); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:2px 8px; font-size:12px; }
+    #panelDock button:hover:not(:disabled) { background:var(--bg-field); }
+    #panelDock button:disabled { opacity:.4; cursor:default; }
+    #panelDock .pd-head button { border:none; }
+    #panelDock .pd-spacer { flex:1; }
+    #panelDock .pd-hint { color:var(--text-faint); font-size:11px; }
+    #panelDock .pd-count { color:var(--text-faint); font-size:11px; }
+    #panelDock .pd-ref { color:var(--faint-2); font-style:italic; font-size:11px; margin-left:auto; }
+    #panelDock .pd-ok { color:var(--ok); font-size:11px; flex:1; }
+    #panelDock .pd-msg { margin:6px 0; padding:5px 8px; border-radius:var(--radius-sm); background:var(--bg-field); font-size:11px; }
+    #panelDock .pd-msg.ok { color:var(--ok); } #panelDock .pd-msg.error { color:var(--err); }
+    #panelDock .pd-part { padding:5px 0; border-top:1px dashed var(--border-light); }
+    #panelDock .pd-part-top { display:flex; align-items:baseline; gap:8px; }
+    #panelDock .pd-fp { display:flex; align-items:center; gap:8px; padding:4px 0; }
+    #panelDock .pd-fp-main { flex:1; min-width:0; } #panelDock .pd-fp-name { font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    #panelDock .pd-thumb { width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--bg-field); border-radius:4px; color:var(--text); flex:none; }
+    #panelDock .pd-fp-btns { display:flex; gap:4px; }
+    #panelDock .pd-body { background:var(--bg-field); display:flex; flex-direction:column; gap:8px; padding:8px 8px 14px; flex:1 1 auto; min-height:0; max-height:none; overflow-y:auto; }
+    #panelDock .pd-head { flex:none; }
+    #panelDock .pd-card { background:var(--bg-panel-raised); border:1px solid var(--border-light); border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,.25); flex:none; overflow:hidden; }
+    #panelDock .pd-card-head { display:flex; align-items:center; gap:8px; width:100%; padding:9px 10px; border:none; border-radius:0; background:transparent; font-size:12.5px; font-weight:700; text-align:left; color:var(--text); }
+    #panelDock .pd-card-head.static { cursor:default; }
+    #panelDock .pd-card.open > .pd-card-head { border-bottom:1px solid var(--border-light); }
+    #panelDock .pd-chev { width:10px; color:var(--text-faint); font-size:11px; }
+    #panelDock .pd-card-title { flex:1; }
+    #panelDock .pd-pill { background:var(--bg-field); color:var(--text-faint); border-radius:10px; padding:1px 8px; font-size:11px; font-weight:600; }
+    #panelDock .pd-card-body { padding:6px 10px 10px; }
+    #panelDock .pd-card .pd-sec { border:none; padding:0; }
+    #panelDock .pd-group { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint); padding:6px 2px 0; }
+    #panelDock .pd-sel { border-color:var(--info); box-shadow:0 0 0 1px var(--info), 0 2px 8px rgba(56,189,248,.25); padding:8px 10px; }
+    #panelDock .pd-sel-title { font-size:13px; color:var(--info); }
+    #panelDock .pd-float { position:fixed; z-index:7; width:300px; max-height:60vh; display:flex; flex-direction:column; background:var(--bg-panel-raised); color:var(--text); border:1px solid var(--info); border-radius:8px; box-shadow:0 0 0 1px var(--info), 0 8px 28px rgba(0,0,0,.45); overflow:hidden; }
+    #panelDock .pd-float-head { display:flex; align-items:center; gap:6px; padding:6px 8px 6px 10px; border-bottom:1px solid var(--border-light); font-size:12px; cursor:move; user-select:none; touch-action:none; }
+    #panelDock .pd-float-head button { border:none; }
+    #panelDock .pd-float-body { overflow:auto; padding:8px 10px 10px; }
+    #panelDock .pd-float .pd-sec { border:none; padding:0; }
+    #panelDock .pd-checks.pd-good .pd-pill { background:rgba(74,222,128,.15); color:var(--ok); }
+    #panelDock .pd-checks.pd-bad { border-color:var(--err); }
+    #panelDock .pd-checks.pd-bad .pd-pill { background:rgba(248,113,113,.18); color:var(--err); }
+    #panelDock .pd-card-body .pd-row > .pd-btn:only-child { flex:1; }
+    .cable-core-route { font-size: 12px; margin-left: 6px; color: var(--text); white-space: nowrap; }
+    .cable-core-block { display:flex; align-items:center; gap:3px; margin:2px 6px 2px 0; }
+    .cable-core-move { width:20px; height:22px; padding:0; font-size:9px; line-height:1; border:1px solid var(--border-light); border-radius:4px; background:var(--bg-field); color:var(--text); cursor:pointer; }
+    .cable-core-move:hover:not(:disabled) { background:var(--accent, #2563eb); color:#fff; }
+    .cable-core-move:disabled { opacity:.3; cursor:default; }
+    .cable-swatch { display:inline-block; width:12px; height:12px; border-radius:3px; border:1px solid #6b7280; flex:0 0 auto; }
+    .cable-swatch-none { background:transparent; border-style:dashed; }
+    .cable-colour-select { width:96px !important; height:24px !important; padding:1px 2px !important; font-size:11px !important; margin:0 !important; }
+    .cable-lib-core { display:flex; align-items:center; gap:6px; margin:2px 0; font-size:12px; }
+    .cable-lib-core b { width:22px; text-align:right; }
+    .cable-core-chip-free { background: transparent; border: 1px dashed var(--border); color: var(--text-faint); }
+
+    .project-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 12px; border-bottom: 1px solid var(--border);
+    }
+    .project-row:last-child { border-bottom: none; }
+    .project-row-active { background: rgba(71, 158, 245, 0.08); }
+    .project-row-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .project-row-meta { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+    .project-row-actions { display: flex; align-items: center; gap: 6px; }
+    .projects-saveas { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .projects-saveas input { flex: 1; margin-bottom: 0; }
+    .projects-saveas-where { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+    .project-row-pick { cursor: pointer; }
+    .project-row-pick:hover { background: rgba(71, 158, 245, 0.08); }
+    .projects-toolbar { display: flex; gap: 8px; margin-bottom: 10px; }
+    .projects-toolbar input { flex: 1; margin-bottom: 0; }
+    .projects-toolbar select { width: auto; margin-bottom: 0; }
+    .projects-body { display: flex; gap: 12px; margin-bottom: 12px; }
+    .projects-folders { width: 190px; flex: none; max-height: 50vh; overflow: auto; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 4px; }
+    .projects-list { flex: 1; min-width: 0; max-height: 50vh; overflow: auto; border: 1px solid var(--border-light); border-radius: var(--radius-md); }
+    .folder-item { display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: var(--radius-sm); font-size: 13px; color: var(--text); cursor: pointer; }
+    .folder-item:hover { background: rgba(71, 158, 245, 0.08); }
+    .folder-item-active { background: rgba(71, 158, 245, 0.16); font-weight: 600; }
+    .folder-item-drop { outline: 2px dashed var(--accent); }
+    .folder-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .folder-item-count { font-size: 11px; color: var(--text-faint); }
+    .folder-item-edit { padding: 0 4px; font-size: 12px; opacity: 0.6; }
+    .folder-item-new { color: var(--accent); }
+    .project-badge { display: inline-block; font-size: 10px; font-weight: 600; color: #fff; padding: 1px 6px; border-radius: 8px; margin-left: 6px; vertical-align: 1px; }
+    .project-row-tags { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px; }
+    .project-tag { font-size: 10px; padding: 1px 6px; border-radius: 8px; border: 1px solid var(--border-light); color: var(--text-faint); }
+    .projects-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); margin: 4px 0; }
+    .projects-templates { border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 6px 8px; margin-bottom: 12px; max-height: 20vh; overflow: auto; }
+
+    /* Symbol Studio modal — expanded working area */
+    #symbolModal .modal-content {
+      width: 90vw; max-width: 1400px; height: 85vh;
+      display: flex; flex-direction: column;
+    }
+    .studio-toolbar {
+      display: flex; gap: 10px; background: var(--bg-panel-deep); padding: 8px 10px;
+      border-radius: var(--radius-md); align-items: center; margin-bottom: 12px; flex-wrap: wrap;
+      border: 1px solid var(--border);
+    }
+    .studio-toolbar .label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .symbol-studio-body { display: flex; flex: 1; gap: 15px; overflow: hidden; }
+    #studioCanvasContainer {
+      flex: 1; width: 100%; height: 100%; position: relative; overflow: hidden;
+      background-color: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md);
+    }
+    #studioCanvasContainer canvas { cursor: inherit !important; }
+  </style>
+</head>
+<body>
+
+
+
+<div id="app-container">
+  <!-- ============ TOOLBAR: Quick Access Toolbar + Ribbon ============ -->
+  <div id="toolbar">
+    <div id="qat">
+      <div class="brand"><img src="images/studioLogo.svg" alt="" style="height:18px; width:18px;"> Schematic Studio</div>
+
+      <div class="qat-group">
+        <button id="saveBtn" class="qat-btn" onclick="saveProjectToServer()" title="Save to your account">💾</button>
+        <button class="qat-btn" onclick="openMyProjectsModal()" title="My Projects (open, organise, Save As)">📁</button>
+        <button id="undoBtn" class="qat-btn" onclick="undoAction()" disabled title="Undo (Ctrl+Z)">↶</button>
+        <button id="redoBtn" class="qat-btn" onclick="redoAction()" disabled title="Redo (Ctrl+Shift+Z)">↷</button>
+        <button class="qat-btn" onclick="printPortfolio()" title="Print every sheet, each on its own correctly-sized page">🖨️</button>
+      </div>
+
+      <label for="projectNameInput" style="margin-left: 4px;">Project</label>
+      <input type="text" id="projectNameInput" value="(unsaved project)" style="width: 200px;" readonly>
+
+      <div class="toolbar-spacer"></div>
+      <span id="autosaveIndicator"></span>
+
+      
+      <a href="/auth/account.php" style="color: var(--text-faint); font-size: 11px; margin-left: 12px; text-decoration:none;" title="My account &mdash; change your password or delete your account">Account</a>
+      <button type="button" id="installAppBtn" class="qat-btn" onclick="installApp()" style="display:none; margin-left:4px; font-size:11px; font-weight:600;" title="Install SchematicStudio as an app">&#11015; Install app</button>
+      <button type="button" id="tourBtn" class="qat-btn" onclick="startWalkthrough()" style="margin-left:4px; font-size:11px; font-weight:600;" title="Take the quick tour of the editor">&#127891; Tour</button>
+      <a href="/help/" target="_blank" rel="noopener" class="qat-btn" style="text-decoration:none; margin-left:4px;" title="Help &mdash; the user guide">&#10067;</a>
+      <button type="button" id="themeToggleBtn" class="qat-btn" onclick="toggleTheme()" style="margin-left:4px;" title="Switch to light mode">&#9728;</button>
+      </div>
+
+    <div class="ribbon-tabs">
+      <button class="ribbon-tab active" id="ribbonTab-home" onclick="setRibbonTab('home')">Home</button>
+      <button class="ribbon-tab" id="ribbonTab-project" onclick="setRibbonTab('project')">Project</button>
+      <button class="ribbon-tab" id="ribbonTab-insert" onclick="setRibbonTab('insert')">Insert</button>
+      <button class="ribbon-tab" id="ribbonTab-draw" onclick="setRibbonTab('draw')">Draw</button>
+      <button class="ribbon-tab" id="ribbonTab-reports" onclick="setRibbonTab('reports')">Reports</button>
+      <button class="ribbon-tab" id="ribbonTab-view" onclick="setRibbonTab('view')">View</button>
+    </div>
+
+    <!-- Home -->
+    <div class="ribbon-content active" id="ribbonContent-home">
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="rotateSelected()" title="Rotate the selected component or text box 90° (R)">
+            <span class="ribbon-btn-icon">↻</span><span class="ribbon-btn-label">Rotate</span>
+          </button>
+          <button class="ribbon-btn" onclick="flipSelected('x')" title="Flip the selected component left to right (mirror it)">
+            <span class="ribbon-btn-icon">&#8596;</span><span class="ribbon-btn-label">Flip<br>left-right</span>
+          </button>
+          <button class="ribbon-btn" onclick="flipSelected('y')" title="Flip the selected component upside down (mirror it)">
+            <span class="ribbon-btn-icon">&#8597;</span><span class="ribbon-btn-label">Flip<br>up-down</span>
+          </button>
+          <button class="ribbon-btn" onclick="duplicateSelectedComponent()" title="Duplicate (Ctrl+D)">
+            <span class="ribbon-btn-icon">⧉</span><span class="ribbon-btn-label">Duplicate</span>
+          </button>
+          <button class="ribbon-btn ribbon-btn-danger" onclick="deleteSelectedComponent()">
+            <span class="ribbon-btn-icon">🗑</span><span class="ribbon-btn-label">Delete</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">Edit</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="setTool('wire')">
+            <span class="ribbon-btn-icon">⚡</span><span class="ribbon-btn-label">Wire</span>
+          </button>
+          <button class="ribbon-btn" onclick="setTool('multiwire')" title="Draw several wires at once: drag across a row of pins (3 for three-phase, 4 with a neutral...), then drag across the pins to connect them to. Esc cancels.">
+            <span class="ribbon-btn-icon">⚡⚡</span><span class="ribbon-btn-label">Multi<br>Wire</span>
+          </button>
+          <button class="ribbon-btn ribbon-btn-danger" onclick="setTool('delete')">
+            <span class="ribbon-btn-icon">✂</span><span class="ribbon-btn-label">Delete<br>Wire</span>
+          </button>
+          <button class="ribbon-btn" onclick="setTool('text')" title="Click the sheet to place a text box">
+            <span class="ribbon-btn-icon">🔤</span><span class="ribbon-btn-label">Add<br>Text</span>
+          </button>
+          <button class="ribbon-btn" onclick="cleanUpConnections()" title="Snap loose wire endpoints onto nearby pins/wires">
+            <span class="ribbon-btn-icon">🧲</span><span class="ribbon-btn-label">Clean<br>Up</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">Tools</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="setTool('terminal')" title="Click the sheet to place a terminal">
+            <span class="ribbon-btn-icon">⏺</span><span class="ribbon-btn-label">Terminal</span>
+          </button>
+          <button class="ribbon-btn" onclick="openTerminalBlockManager()" title="See every terminal block in the project, and rename it, move it or change what its labels show">
+            <span class="ribbon-btn-icon">🗂</span><span class="ribbon-btn-label">Terminal<br>Blocks</span>
+          </button>
+          <button class="ribbon-btn" onclick="setTool('link')" title="Click two terminals to show they are physically joined (terminals with the same number are highlighted)">
+            <span class="ribbon-btn-icon">🔗</span><span class="ribbon-btn-label">Link<br>Terminals</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">Terminals</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          
+          <button class="ribbon-btn" onclick="setTool('cable')" title="Drag a line across a group of wires to bundle them into a cable">
+            <span class="ribbon-btn-icon">🔌</span><span class="ribbon-btn-label">Cable</span>
+          </button>
+          <button class="ribbon-btn" onclick="setTool('shield')" title="Drag a line across a group of wires to mark them as a screened/shielded cable, with a real grounding terminal auto-placed and wired at one end">
+            <span class="ribbon-btn-icon">🛡️</span><span class="ribbon-btn-label">Shield</span>
+          </button>
+          <button class="ribbon-btn" onclick="setTool('connector')" title="Drag a line across a group of wires to mark a plug and socket connector on them, with a designator and pin numbers">
+            <span class="ribbon-btn-icon">&#8644;</span><span class="ribbon-btn-label">Connector</span>
+          </button>
+          
+        </div>
+        <div class="ribbon-group-label">Cables</div>
+      </div>
+
+    </div>
+
+    <!-- Project -->
+    <div class="ribbon-content" id="ribbonContent-project" style="display:none;">
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="openSheetPropsModal()" title="Title, description, revision, and other title-block details">
+            <span class="ribbon-btn-icon">📝</span><span class="ribbon-btn-label">Sheet<br>Properties</span>
+          </button>
+          <button class="ribbon-btn" onclick="openRevisionsModal()" title="Issue revisions (A, B, C ...) and see what has changed since the last one">
+            <span class="ribbon-btn-icon">🔖</span><span class="ribbon-btn-label">Revisions</span>
+          </button>
+          <button class="ribbon-btn" onclick="addSheet()">
+            <span class="ribbon-btn-icon">➕</span><span class="ribbon-btn-label">New<br>Sheet</span>
+          </button>
+          <button class="ribbon-btn" onclick="addTitlePage()" title="Add a title page at the start of the portfolio">
+            <span class="ribbon-btn-icon">📄</span><span class="ribbon-btn-label">Title<br>Page</span>
+          </button>
+          <button class="ribbon-btn" onclick="addContentsPage()" title="Add a dynamically-updating contents page listing every sheet">
+            <span class="ribbon-btn-icon">📑</span><span class="ribbon-btn-label">Contents</span>
+          </button>
+          
+          <button class="ribbon-btn" onclick="addLocationsPage()" title="Add a dynamically-updating page listing every defined IEC location and which sheets use it">
+            <span class="ribbon-btn-icon">📍</span><span class="ribbon-btn-label">Locations</span>
+          </button>
+          <button class="ribbon-btn" onclick="openManageLocationsModal()" title="Rename, re-describe, or delete a location — updates everywhere it's used automatically">
+            <span class="ribbon-btn-icon">✎</span><span class="ribbon-btn-label">Manage<br>Locations</span>
+          </button>
+          <button class="ribbon-btn" onclick="addCableDiagramPage()" title="Add a dynamically-updating single line page: every location as a box, with the cables drawn between them">
+            <span class="ribbon-btn-icon">🔌</span><span class="ribbon-btn-label">Cable<br>Diagram</span>
+          </button>
+          
+          <button class="ribbon-btn" onclick="addBOMPage()" title="Add a dynamically-updating Bill of Materials page at the end of the portfolio — if the parts list is too long for one page, add another to continue it">
+            <span class="ribbon-btn-icon">📋</span><span class="ribbon-btn-label">BOM<br>Page</span>
+          </button>
+          <button class="ribbon-btn" onclick="addPlcIoPage()" title="Add a dynamically-updating PLC I/O Schedule page at the end of the portfolio — every PLC input and output with its function, wire and destination; if the list is too long for one page, add another to continue it">
+            <span class="ribbon-btn-icon">🖥️</span><span class="ribbon-btn-label">PLC I/O<br>Page</span>
+          </button>
+          
+          <button class="ribbon-btn" onclick="addPanelSheet()" title="Add a Panel Layout sheet: import backplate and component drawings (DXF) and arrange them to scale, linked to the schematic parts and the BOM">
+            <span class="ribbon-btn-icon">&#128452;&#65039;</span><span class="ribbon-btn-label">Panel<br>Layout</span>
+          </button>
+          
+        </div>
+        <div class="ribbon-group-label">Sheets</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          
+          <button class="ribbon-btn" onclick="savePortfolio()" title="Download this project as a JSON file">
+            <span class="ribbon-btn-icon">📤</span><span class="ribbon-btn-label">Export<br>File</span>
+          </button>
+          <button class="ribbon-btn" onclick="document.getElementById('fileInput').click()" title="Load a project from a JSON file">
+            <span class="ribbon-btn-icon">📥</span><span class="ribbon-btn-label">Import<br>File</span>
+          </button>
+          <input type="file" id="fileInput" accept=".json" style="display: none;" onchange="loadPortfolio(event)">
+          
+          <button class="ribbon-btn" onclick="saveProjectAsToServer()" title="Save a copy of this project under a new name, in a folder you choose, and carry on working in the copy">
+            <span class="ribbon-btn-icon">🗂️</span><span class="ribbon-btn-label">Save<br>As&hellip;</span>
+          </button>
+          <button class="ribbon-btn" onclick="startNewProject()" title="Start a new, blank project">
+            <span class="ribbon-btn-icon">🆕</span><span class="ribbon-btn-label">New<br>Project</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">File</div>
+      </div>
+
+    </div>
+
+    <!-- Insert -->
+    <div class="ribbon-content" id="ribbonContent-insert" style="display:none;">
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          
+          <button class="ribbon-btn" onclick="openSymbolCreator()">
+            <span class="ribbon-btn-icon">🧩</span><span class="ribbon-btn-label">Create<br>Symbol</span>
+          </button>
+          <button class="ribbon-btn" onclick="openPlcModuleCreator()" title="Make a PLC module symbol: make, model, description, designator, and its inputs and outputs with an address and a function each">
+            <span class="ribbon-btn-icon">🖥</span><span class="ribbon-btn-label">PLC<br>Module</span>
+          </button>
+          <button class="ribbon-btn" onclick="openDriveCreator()" title="Make a drive symbol: make, model, rating, designator, its supply and motor terminals and its control terminals with a function each">
+            <span class="ribbon-btn-icon">⚙</span><span class="ribbon-btn-label">Drive<br>Creator</span>
+          </button>
+          
+          
+          <button class="ribbon-btn" onclick="openTerminalBlockModal()">
+            <span class="ribbon-btn-icon">🔩</span><span class="ribbon-btn-label">Terminal<br>Block</span>
+          </button>
+          
+        </div>
+        <div class="ribbon-group-label">Symbols</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          
+          <button class="ribbon-btn" onclick="openBrowseLibrariesModal()" title="Import a symbol library made available on this server, such as the Basic library">
+            <span class="ribbon-btn-icon">📚</span><span class="ribbon-btn-label">Browse<br>Libraries</span>
+          </button>
+          <button class="ribbon-btn" onclick="openPartsLibrary()" title="Make, model and description of the parts you reuse, kept in your account">
+            <span class="ribbon-btn-icon">🗃️</span><span class="ribbon-btn-label">Parts<br>Library</span>
+          </button>
+          <button class="ribbon-btn" onclick="exportSymbolLibrary()" title="Save one of your symbol libraries to a file">
+            <span class="ribbon-btn-icon">📤</span><span class="ribbon-btn-label">Export<br>Library</span>
+          </button>
+          <button class="ribbon-btn" onclick="document.getElementById('importSymbolInput').click()" title="Load a symbol library file">
+            <span class="ribbon-btn-icon">📥</span><span class="ribbon-btn-label">Import<br>Library</span>
+          </button>
+          <input type="file" id="importSymbolInput" accept=".json" style="display:none;" onchange="importSymbolLibrary(event)">
+          
+        </div>
+        <div class="ribbon-group-label">Libraries</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="document.getElementById('logoFileInput').click()" title="Shown in every sheet's title block">
+            <span class="ribbon-btn-icon">🖼️</span><span class="ribbon-btn-label">Set<br>Logo</span>
+          </button>
+          <input type="file" id="logoFileInput" accept="image/*" style="display: none;" onchange="setCompanyLogo(event)">
+          <button class="ribbon-btn" onclick="openProjectInfoModal()" title="Company, project and document-number details for the title block, and the ISO 7200 title block">
+            <span class="ribbon-btn-icon">📋</span><span class="ribbon-btn-label">Title<br>Block</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">Branding</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="document.getElementById('imageFileInput').click()" title="Add a picture to the current sheet — drag to reposition, drag a corner to resize, R to rotate">
+            <span class="ribbon-btn-icon">🖼</span><span class="ribbon-btn-label">Insert<br>Image</span>
+          </button>
+          <input type="file" id="imageFileInput" accept="image/*" style="display: none;" onchange="insertImageFromFile(event)">
+        </div>
+        <div class="ribbon-group-label">Images</div>
+      </div>
+
+    </div>
+
+    <!-- Draw -->
+    <div class="ribbon-content" id="ribbonContent-draw" style="display:none;">
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="setTool('shape-line')" title="Drag on the sheet to draw a line. Hold Shift for any angle.">
+            <span class="ribbon-btn-icon">╱</span><span class="ribbon-btn-label">Line</span>
+          </button>
+          <button class="ribbon-btn" onclick="setTool('shape-rect')" title="Drag on the sheet to draw a rectangle. Hold Shift for a square.">
+            <span class="ribbon-btn-icon">▭</span><span class="ribbon-btn-label">Rectangle</span>
+          </button>
+          
+          <button class="ribbon-btn" onclick="setTool('shape-location')" title="Drag on the sheet to mark a region that departs from the sheet's own location — you'll be asked to pick or create the location it belongs to, and every component currently inside the box will be updated to it">
+            <span class="ribbon-btn-icon">📍</span><span class="ribbon-btn-label">Location<br>Boundary</span>
+          </button>
+          
+          <button class="ribbon-btn" onclick="setTool('shape-ellipse')" title="Drag on the sheet to draw an ellipse. Hold Shift for a circle.">
+            <span class="ribbon-btn-icon">◯</span><span class="ribbon-btn-label">Ellipse</span>
+          </button>
+          <div class="ribbon-field" title="Style of the selected shape, and of the next one you draw">
+            <label for="shapeStyleSelect">Line style</label>
+            <select id="shapeStyleSelect" class="ribbon-select" onchange="setShapeStyle(this.value); this.blur();">
+              <option value="solid">Solid</option>
+              <option value="dashed">Dashed</option>
+              <option value="dotted">Dotted</option>
+              <option value="dashdashline">Dash-dash-line</option>
+            </select>
+          </div>
+          <div class="ribbon-field" title="How finely lines, arrows, rectangles and ellipses snap while you draw and move them (the sheet grid is 20 px)">
+            <label for="shapeSnapSelect">Snap</label>
+            <select id="shapeSnapSelect" class="ribbon-select" onchange="setShapeSnap(this.value); this.blur();">
+              <option value="5">5 px</option>
+              <option value="10">10 px</option>
+              <option value="20">20 px</option>
+            </select>
+          </div>
+        </div>
+        <div class="ribbon-group-label">Shapes</div>
+      </div>
+      <div class="ribbon-divider"></div>
+
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="setTool('shape-arrow')" title="Drag on the sheet to draw an arrow. Hold Shift for horizontal or vertical. Double-click an arrow to add a note.">
+            <span class="ribbon-btn-icon">&#10140;</span><span class="ribbon-btn-label">Arrow</span>
+          </button>
+          <button class="ribbon-btn" onclick="editSelectedArrowNote()" title="Add or edit the note on the selected arrow (or double-click the arrow)">
+            <span class="ribbon-btn-icon">&#128221;</span><span class="ribbon-btn-label">Arrow<br>note</span>
+          </button>
+          <div class="ribbon-field" title="Arrowhead style of the selected arrow, and of the next one you draw">
+            <label for="arrowHeadSelect">Arrowhead</label>
+            <select id="arrowHeadSelect" class="ribbon-select" onchange="setArrowOption('headStyle', this.value); this.blur();">
+              <option value="filled">Filled</option>
+              <option value="open">Open</option>
+              <option value="circle">Dot</option>
+              <option value="bar">Bar</option>
+            </select>
+          </div>
+          <div class="ribbon-field" title="Which end of the arrow has the head">
+            <label for="arrowEndsSelect">Heads on</label>
+            <select id="arrowEndsSelect" class="ribbon-select" onchange="setArrowOption('head', this.value); this.blur();">
+              <option value="end">End</option>
+              <option value="both">Both ends</option>
+              <option value="start">Start</option>
+            </select>
+          </div>
+          <div class="ribbon-field" title="Thickness of the arrow">
+            <label for="arrowWeightSelect">Thickness</label>
+            <select id="arrowWeightSelect" class="ribbon-select" onchange="setArrowOption('weight', this.value); this.blur();">
+              <option value="0.5">Thin</option>
+              <option value="1">Medium</option>
+              <option value="1.5">Thick</option>
+            </select>
+          </div>
+          <div class="ribbon-field" title="Size of the arrowhead on the selected arrow, and on the next one you draw">
+            <label for="arrowSizeSelect">Head size</label>
+            <select id="arrowSizeSelect" class="ribbon-select" onchange="setArrowOption('headSize', this.value); this.blur();">
+              <option value="0.7">Small</option>
+              <option value="1" selected>Normal</option>
+              <option value="1.5">Large</option>
+              <option value="2">Extra large</option>
+              <option value="3">Huge</option>
+            </select>
+          </div>
+        </div>
+        <div class="ribbon-group-label">Arrows</div>
+      </div>
+
+    </div>
+
+    <!-- Reports -->
+    <div class="ribbon-content" id="ribbonContent-reports" style="display:none;">
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="openBOMModal()">
+            <span class="ribbon-btn-icon">📋</span><span class="ribbon-btn-label">BOM</span>
+          </button>
+          <button class="ribbon-btn" onclick="openWireReferenceModal()" title="See every named wire's cross-reference group across the whole portfolio">
+            <span class="ribbon-btn-icon">🔗</span><span class="ribbon-btn-label">Wire<br>Refs</span>
+          </button>
+          <button class="ribbon-btn" onclick="openPlcScheduleModal()" title="A schedule of every PLC input and output: address, function, wire and what it goes to">
+            <span class="ribbon-btn-icon">🖥️</span><span class="ribbon-btn-label">PLC I/O<br>Schedule</span>
+          </button>
+          <button class="ribbon-btn" onclick="openWireMarkerModal()" title="Export a CSV of wire markers (one per connection point) for M-Print PRO or similar">
+            <span class="ribbon-btn-icon">🏷️</span><span class="ribbon-btn-label">Wire<br>Markers</span>
+          </button>
+          <button class="ribbon-btn" onclick="openTerminalMarkerModal()" title="Export a CSV of terminal markers (one per terminal) for M-Print PRO or similar">
+            <span class="ribbon-btn-icon">🔢</span><span class="ribbon-btn-label">Terminal<br>Markers</span>
+          </button>
+          <button class="ribbon-btn" onclick="openCableManagerModal()" title="View, edit, or delete cables">
+            <span class="ribbon-btn-icon">🔌</span><span class="ribbon-btn-label">Cables</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">Reports</div>
+      </div>
+
+    </div>
+
+    <!-- View -->
+    <div class="ribbon-content" id="ribbonContent-view" style="display:none;">
+      <div class="ribbon-group">
+        <div class="ribbon-group-buttons">
+          <button class="ribbon-btn" onclick="fitView()" title="Reset zoom/pan to fit the sheet">
+            <span class="ribbon-btn-icon">⤢</span><span class="ribbon-btn-label">Fit<br>View</span>
+          </button>
+          
+          <button class="ribbon-btn" onclick="openFindModal()" title="Find a designator, wire ID, terminal, part number or description anywhere in the project (Ctrl+F)">
+            <span class="ribbon-btn-icon">&#128269;</span><span class="ribbon-btn-label">Find</span>
+          </button>
+          
+          <button class="ribbon-btn ribbon-btn-toggled-on" id="crosshairToggleBtn" onclick="toggleCrosshair()" title="A light red guide through the pointer, to help line up components and wires — click to turn off">
+            <span class="ribbon-btn-icon">✛</span><span class="ribbon-btn-label">Crosshair</span>
+          </button>
+          <button class="ribbon-btn" id="wireIdToggleBtn" onclick="toggleWireIds()" title="Show or hide the wire ID labels on the wires, for the whole drawing. The IDs are kept; double-click a wire to edit one.">
+            <span class="ribbon-btn-icon">🏷</span><span class="ribbon-btn-label" id="wireIdToggleLabel">Wire IDs:<br>Shown</span>
+          </button>
+          <button class="ribbon-btn" id="wirePlcToggleBtn" onclick="toggleWirePlcData()" title="Where a wire continues on another sheet to a PLC input or output, its sheet reference (such as Sh.4/C3) also says which one: module, address and function. Click to show or hide that, for the whole drawing.">
+            <span class="ribbon-btn-icon">▤</span><span class="ribbon-btn-label" id="wirePlcToggleLabel">PLC data:<br>Shown</span>
+          </button>
+          <button class="ribbon-btn" id="junctionStyleToggleBtn" onclick="toggleJunctionStyle()" title="Show real wire connections as a filled dot, or as a hop in the through-wire instead — click to switch. This is the automatic setting for the whole drawing: click any single junction on the sheet to set just that one (it steps through dot and the two corner-and-diagonal styles, then back to automatic — Shift-click steps back)">
+            <span class="ribbon-btn-icon">⏚</span><span class="ribbon-btn-label" id="junctionStyleToggleLabel">Junction:<br>Dot</span>
+          </button>
+          <button class="ribbon-btn" id="junctionHopDirBtn" onclick="toggleJunctionHopDirection()" disabled title="Which way the through-wire hops at a junction: toward the branch, or away from it — click to switch (available while the junction style is Hop). Junctions you have clicked individually keep their own setting">
+            <span class="ribbon-btn-icon">⇅</span><span class="ribbon-btn-label" id="junctionHopDirLabel">Hop:<br>Toward</span>
+          </button>
+        </div>
+        <div class="ribbon-group-label">Display</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="main-body">
+    <!-- ============ SIDEBAR ============ -->
+    <div id="sidebar">
+      <div class="sidebar-search"><input type="search" id="symbolSearchInput" placeholder="Search symbols…" oninput="filterSymbolSidebar()" style="width:100%; box-sizing:border-box; padding:6px 8px; border:1px solid var(--border-light); border-radius:var(--radius-sm); background:var(--bg-panel-raised); color:var(--text); font-family:inherit; font-size:12.5px;"></div>
+      <div id="symbolSearchEmpty" class="modal-hint" style="display:none;">No symbols match "<span id="symbolSearchEmptyQuery"></span>".</div>
+
+      <div class="section">
+        <h3>Built-in Symbols</h3>
+        <div id="builtin-symbols-list"></div>
+        <div class="symbol-item" draggable="true" ondragstart="handleDragStart(event, 'gnd')" data-builtin-symbol="gnd">
+          <div class="symbol-item-main"><div class="symbol-thumb"></div><span class="symbol-name">Ground</span></div>
+        </div>
+        <div class="symbol-item" draggable="true" ondragstart="handleDragStart(event, 'supply_3n_pe')" title="3-phase + Neutral + Earth" data-builtin-symbol="supply_3n_pe">
+          <div class="symbol-item-main"><div class="symbol-thumb"></div><span class="symbol-name">3+N+PE Supply</span></div>
+        </div>
+        <div class="symbol-item" draggable="true" ondragstart="handleDragStart(event, 'supply_1n_pe')" title="Single phase + Neutral + Earth" data-builtin-symbol="supply_1n_pe">
+          <div class="symbol-item-main"><div class="symbol-thumb"></div><span class="symbol-name">1+N+PE Supply</span></div>
+        </div>
+        <div class="symbol-item" draggable="true" ondragstart="handleDragStart(event, 'supply_3_pe')" title="3-phase + Earth (no neutral)" data-builtin-symbol="supply_3_pe">
+          <div class="symbol-item-main"><div class="symbol-thumb"></div><span class="symbol-name">3+PE Supply</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Custom Symbols</h3>
+        <div id="custom-symbols-list" class="section"></div>
+      </div>
+    </div>
+
+    <!-- ============ CANVAS ============ -->
+    <div id="canvas-container" ondragover="event.preventDefault()" ondrop="handleDrop(event)" oncontextmenu="return false;"></div>
+  </div>
+
+  <!-- ============ SHEET TABS ============ -->
+  <div id="tab-bar">
+    <button id="portfolioBtn" class="btn btn-ghost" style="flex:none; white-space:nowrap;" onclick="openPortfolioView()" title="See every sheet in the project and choose which ones have a tab">&#9776; Portfolio</button>
+    <div id="tabs-list" style="display: flex; gap: 4px; min-width: 0; flex: 0 1 auto; overflow-x: auto; scrollbar-width: thin;"></div>
+    <button id="add-tab-btn" onclick="addSheet()">+ New Sheet</button>
+  </div>
+</div>
+
+<!-- ============ PLC MODULE CREATOR ============ -->
+<div id="plcModal" class="modal-overlay" style="z-index: 1012;">
+  <div class="modal-card" style="width: 940px; max-width: 96vw; max-height: 94vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3 id="plcTitle">PLC Module Creator</h3>
+      <button type="button" class="btn-icon" onclick="closePlcModuleCreator()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Makes a PLC module symbol: its details in a label block on the left, with the pins along the top and bottom edges, each labelled with its address and what it does. It goes into the library below, ready to drag onto a sheet.</p>
+    <p id="plcEditNote" class="modal-hint" style="display:none; color:#fbbf24;">Editing redraws this module. Modules already on a sheet are redrawn too; if you changed the number of inputs or outputs, check the wires on them.</p>
+
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="plcMake">Make</label><input type="text" id="plcMake" maxlength="30" placeholder="e.g. Siemens" autocomplete="off"></div>
+      <div style="flex:1;"><label for="plcModel">Model</label><input type="text" id="plcModel" maxlength="40" placeholder="e.g. S7-1200 1214C" autocomplete="off"></div>
+    </div>
+    <label for="plcDescription">Description</label>
+    <input type="text" id="plcDescription" maxlength="80" placeholder="e.g. CPU, 14 DI / 10 DO" autocomplete="off">
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="plcDesignator">Designator</label><input type="text" id="plcDesignator" maxlength="6" placeholder="PLC" autocomplete="off"></div>
+      <div style="flex:1;"><label for="plcLibrary">Library</label><input type="text" id="plcLibrary" maxlength="40" list="plcLibraryList" autocomplete="off"></div>
+    </div>
+    <datalist id="plcLibraryList"></datalist>
+    <datalist id="plcFunctionList"></datalist>
+    <p class="modal-hint" style="margin-top:-4px;">Modules on a sheet are numbered from the designator: PLC1, PLC2&hellip;</p>
+
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="plcInCount">Inputs</label><input type="number" id="plcInCount" min="0" max="64" step="1" value="8" onchange="onPlcCountChange()"></div>
+      <div style="flex:1;"><label for="plcOutCount">Outputs</label><input type="number" id="plcOutCount" min="0" max="64" step="1" value="8" onchange="onPlcCountChange()"></div>
+    </div>
+
+    <div class="terminal-two-col" style="align-items:flex-end; gap:8px;">
+      <div style="flex:none; width:70px;"><label for="plcInPrefix">Input</label><input type="text" id="plcInPrefix" maxlength="4" value="I" autocomplete="off"></div>
+      <div style="flex:none; width:70px;"><label for="plcOutPrefix">Output</label><input type="text" id="plcOutPrefix" maxlength="4" value="Q" autocomplete="off"></div>
+      <div style="flex:1;"><label for="plcAddrStyle">Addresses</label>
+        <select id="plcAddrStyle"><option value="bytebit">Byte.bit (I0.0 &hellip; I0.7, I1.0)</option><option value="sequential">Sequential (I0, I1, I2)</option></select></div>
+      <div style="flex:none; width:70px;"><label for="plcAddrStart">Start at</label><input type="number" id="plcAddrStart" min="0" step="1" value="0"></div>
+      <button type="button" class="btn btn-ghost" onclick="autoAddressPlcChannels()" title="Give every input and output a new address using these settings">Auto-address</button>
+    </div>
+    <div style="margin-top:8px;"><label for="plcFnPlacement">Function text</label>
+      <select id="plcFnPlacement"><option value="outside">Outside the box, beside each pin</option><option value="inside">Inside the box, under each address</option></select></div>
+
+    <p class="modal-hint" style="margin-top:-2px;">Any input, output or supply can sit on either edge. Drag a row by its grip to reorder it, or to move it to the other edge.</p>
+    <div class="terminal-two-col" style="gap:14px;">
+      <div style="flex:1; min-width:0;">
+        <label>Top edge</label>
+        <div id="plcTopList" class="plc-list"></div>
+        <select class="plc-add" onchange="addPlcItem(this, 'top')" aria-label="Add to the top edge"><option value="">+ Add to the top edge&hellip;</option><option value="custom-in-digital">Digital input</option><option value="custom-in-analogue">Analogue input</option><option value="custom-in-safety">Safety input</option><option value="custom-in-highspeed">High-speed / pulse input</option><option value="custom-in-temperature">Temperature (RTD/TC) input</option><option value="custom-in-comms">Communications input</option><option value="custom-in-other">Other input</option><option value="custom-out-digital">Digital output</option><option value="custom-out-analogue">Analogue output</option><option value="custom-out-relay">Relay output</option><option value="custom-out-safety">Safety output</option><option value="custom-out-highspeed">High-speed / pulse output</option><option value="custom-out-comms">Communications output</option><option value="custom-out-other">Other output</option><option value="supply">Supply (L+)</option><option value="output_supply">Output supply</option><option value="sensor_supply">Sensor supply</option><option value="analogue_supply">Analogue supply</option><option value="encoder_supply">Encoder supply</option><option value="reference">10V reference</option><option value="dc_positive">DC positive</option><option value="ac_live">AC live (L)</option><option value="common">Common (0V)</option><option value="sensor_common">Sensor common</option><option value="analogue_common">Analogue common</option><option value="dc_negative">DC negative</option><option value="ac_neutral">AC neutral (N)</option><option value="relay_common">Relay common</option><option value="pe">PE (earth)</option><option value="functional_earth">Functional earth (FE)</option><option value="shield">Shield</option><option value="other">Other connection</option></select>
+      </div>
+      <div style="flex:1; min-width:0;">
+        <label>Bottom edge</label>
+        <div id="plcBottomList" class="plc-list"></div>
+        <select class="plc-add" onchange="addPlcItem(this, 'bottom')" aria-label="Add to the bottom edge"><option value="">+ Add to the bottom edge&hellip;</option><option value="custom-in-digital">Digital input</option><option value="custom-in-analogue">Analogue input</option><option value="custom-in-safety">Safety input</option><option value="custom-in-highspeed">High-speed / pulse input</option><option value="custom-in-temperature">Temperature (RTD/TC) input</option><option value="custom-in-comms">Communications input</option><option value="custom-in-other">Other input</option><option value="custom-out-digital">Digital output</option><option value="custom-out-analogue">Analogue output</option><option value="custom-out-relay">Relay output</option><option value="custom-out-safety">Safety output</option><option value="custom-out-highspeed">High-speed / pulse output</option><option value="custom-out-comms">Communications output</option><option value="custom-out-other">Other output</option><option value="supply">Supply (L+)</option><option value="output_supply">Output supply</option><option value="sensor_supply">Sensor supply</option><option value="analogue_supply">Analogue supply</option><option value="encoder_supply">Encoder supply</option><option value="reference">10V reference</option><option value="dc_positive">DC positive</option><option value="ac_live">AC live (L)</option><option value="common">Common (0V)</option><option value="sensor_common">Sensor common</option><option value="analogue_common">Analogue common</option><option value="dc_negative">DC negative</option><option value="ac_neutral">AC neutral (N)</option><option value="relay_common">Relay common</option><option value="pe">PE (earth)</option><option value="functional_earth">Functional earth (FE)</option><option value="shield">Shield</option><option value="other">Other connection</option></select>
+      </div>
+    </div>
+
+
+    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:10px;">
+      <button type="button" class="btn btn-ghost" onclick="groupPlcSelected()" title="Put the terminals you have ticked under one name and description, e.g. X3 Encoder">Group ticked terminals</button>
+      <button type="button" class="btn btn-ghost" onclick="ungroupPlcSelected()">Ungroup ticked</button>
+    </div>
+    <p class="modal-hint" style="margin:4px 0 0;">Tick terminals with the boxes on the left, then group them (for example <i>A, A_, B, B_, Z, Z_, V+, V-</i> as <i>X3 &ndash; Encoder</i>). They are brought together on their edge and drawn in a frame with that title.</p>
+    <div id="plcGroups" class="plc-list" style="margin-top:6px; min-height:0; border:0; padding:0;"></div>
+    <label style="margin-top:10px;">Preview</label>
+    <div id="plcPreview"></div>
+
+    <p id="plcMessage" class="modal-hint" style="display:none;"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closePlcModuleCreator()">Cancel</button>
+      <button type="button" id="plcSaveBtn" class="btn btn-primary" onclick="savePlcModule()">Create module</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DRIVE CREATOR ============ -->
+<div id="driveModal" class="modal-overlay" style="z-index: 1012;">
+  <div class="modal-card" style="width: 760px; max-width: 96vw; max-height: 94vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3 id="driveTitle">Drive Creator</h3>
+      <button type="button" class="btn-icon" onclick="closeDriveCreator()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Makes a drive symbol (variable speed drive, inverter or soft starter): a plain box with the make and model at the top, the supply along the top, the motor along the bottom and the control terminals in columns down the left and right sides (or, in the Classic layout, a label block on the left and the control terminals down the right edge). It goes into the library below, ready to drag onto a sheet.</p>
+    <p id="driveEditNote" class="modal-hint" style="display:none; color:#fbbf24;">Editing redraws this drive. Drives already on a sheet are redrawn too; if you changed the terminals, check the wires on them.</p>
+
+    <label for="driveLayout">Layout</label>
+    <select id="driveLayout"><option value="block">Block &ndash; terminals inside a plain box, control terminals left and right</option><option value="classic">Classic &ndash; label block on the left, control terminals down the right edge</option></select>
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="driveMake">Make</label><input type="text" id="driveMake" maxlength="30" placeholder="e.g. Schneider" autocomplete="off"></div>
+      <div style="flex:1;"><label for="driveModel">Model</label><input type="text" id="driveModel" maxlength="40" placeholder="e.g. ATV320U55N4B" autocomplete="off"></div>
+    </div>
+    <label for="driveDescription">Description</label>
+    <input type="text" id="driveDescription" maxlength="80" placeholder="e.g. Variable speed drive" autocomplete="off">
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="driveRating">Rating</label><input type="text" id="driveRating" maxlength="30" placeholder="e.g. 5.5 kW, 400V 3Ph" autocomplete="off"></div>
+      <div style="flex:1;"><label for="driveDesignator">Designator</label><input type="text" id="driveDesignator" maxlength="6" placeholder="VFD" autocomplete="off"></div>
+      <div style="flex:1;"><label for="driveLibrary">Library</label><input type="text" id="driveLibrary" maxlength="40" list="driveLibraryList" autocomplete="off"></div>
+    </div>
+    <datalist id="driveLibraryList"></datalist>
+    <datalist id="driveFunctionList"></datalist>
+    <p class="modal-hint" style="margin-top:-4px;">Drives on a sheet are numbered from the designator: VFD1, VFD2&hellip;</p>
+
+    <div class="terminal-two-col" style="gap:14px;">
+      <div style="flex:1; min-width:0;">
+        <label>Supply (top edge)</label>
+        <div id="driveTopList" class="plc-list"></div>
+        <select class="plc-add" onchange="addDrivePower(this, 'top')" aria-label="Add a supply terminal"><option value="">+ Add supply terminals&hellip;</option><option value="three">3-phase supply (L1 L2 L3)</option><option value="single">1-phase supply (L N)</option><option value="dcin">DC supply (DC+ DC-)</option><option value="pe">PE (earth)</option><option value="other">Other terminal</option></select>
+      </div>
+      <div style="flex:1; min-width:0;">
+        <label>Motor (bottom edge)</label>
+        <div id="driveBottomList" class="plc-list"></div>
+        <select class="plc-add" onchange="addDrivePower(this, 'bottom')" aria-label="Add a motor terminal"><option value="">+ Add motor terminals&hellip;</option><option value="motor">Motor (U V W)</option><option value="brake">Brake resistor (BR+ BR-)</option><option value="dcbus">DC bus (DC+ DC-)</option><option value="pe">PE (earth)</option><option value="other">Other terminal</option></select>
+      </div>
+    </div>
+
+    <label style="margin-top:10px;">Control terminals <span id="driveControlHint" style="font-weight:400; color:var(--text-muted); font-size:11px;">(choose Left or Right for each in the Block layout; the Classic layout puts them all down the right edge)</span></label>
+    <div id="driveControlList" class="plc-list"></div>
+    <select class="plc-add" onchange="addDriveControl(this)" aria-label="Add a control terminal"><option value="">+ Add a control terminal&hellip;</option><option value="di">Digital input</option><option value="do">Digital output</option><option value="ai">Analogue input</option><option value="ao">Analogue output</option><option value="relay">Relay output</option><option value="supply">Supply (24V)</option><option value="common">Common (0V)</option><option value="safety">Safe torque off</option><option value="comms">Communications</option><option value="other">Other</option></select>
+
+
+    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:10px;">
+      <button type="button" class="btn btn-ghost" onclick="groupDriveSelected()" title="Put the terminals you have ticked under one name and description, e.g. X3 Encoder">Group ticked terminals</button>
+      <button type="button" class="btn btn-ghost" onclick="ungroupDriveSelected()">Ungroup ticked</button>
+    </div>
+    <p class="modal-hint" style="margin:4px 0 0;">Tick terminals on one edge with the boxes on the left, then group them (for example <i>A, A_, B, B_, Z, Z_, V+, V-</i> as <i>X3 &ndash; Encoder</i>). They are drawn in a frame with that title.</p>
+    <div id="driveGroups" class="plc-list" style="margin-top:6px; min-height:0; border:0; padding:0;"></div>
+    <label style="margin-top:10px;">Preview</label>
+    <div id="drivePreview"></div>
+
+    <p id="driveMessage" class="modal-hint" style="display:none;"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeDriveCreator()">Cancel</button>
+      <button type="button" id="driveSaveBtn" class="btn btn-primary" onclick="saveDrive()">Create drive</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMINAL BLOCKS ============ -->
+<div id="terminalBlockManagerModal" class="modal-overlay" style="z-index: 1015;">
+  <div class="modal-card" style="width: 520px; max-width: 94vw; max-height: 94vh; overflow-y: auto;">
+    <div class="modal-header" style="position: sticky; top: 0; z-index: 2; background: inherit;">
+      <h3>Terminal Blocks</h3>
+      <button type="button" class="btn-icon" onclick="closeTerminalBlockManager()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Every terminal block declared in the project. Changing a block changes all of its terminals, on every sheet.</p>
+
+    <p id="tbmEmpty" class="modal-hint" style="display:none;">No terminal blocks yet. Use the Terminal tool to place a terminal and give it a block and position.</p>
+
+    <label for="tbmList">Blocks</label>
+    <select id="tbmList" size="5" onchange="onTerminalBlockManagerPick()" style="height:auto;"></select>
+
+    <div id="tbmForm">
+      <label for="tbmName">Designator</label>
+      <input type="text" id="tbmName" maxlength="20" placeholder="e.g. X1, TB2" autocomplete="off">
+
+      <label for="tbmDescription">Description <span style="font-weight:400; color:var(--text-faint);">(shown on the terminal table)</span></label>
+      <input type="text" id="tbmDescription" maxlength="40" placeholder="e.g. Motor feeds" autocomplete="off">
+
+      <div class="terminal-two-col">
+        <div style="flex:1;">
+          <label for="tbmLocation" id="tbmLocationHeading">Location</label>
+          <select id="tbmLocation"></select>
+        </div>
+        <div style="flex:1;">
+          <label for="tbmLabelMode" id="tbmLabelModeHeading">Label shows</label>
+          <select id="tbmLabelMode">
+            <option value="auto">Automatic</option>
+            <option value="show">Always show the location</option>
+            <option value="hide">Hide the location</option>
+            <option value="position">Position only</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="terminal-two-col" style="align-items:flex-end; gap:8px; margin-bottom:6px;">
+        <div style="flex:none; width:150px;">
+          <label for="tbmOrder">Wire ID order</label>
+          <select id="tbmOrder"><option value="asc">Ascending</option><option value="desc">Descending</option></select>
+        </div>
+        <button type="button" id="tbmArrangeBtn" class="btn btn-primary" style="flex:1;" onclick="arrangeSelectedBlock()" title="One step: sides back to Automatic, each net's internal and external connections paired on one terminal, gaps closed, and the positions numbered by wire ID in the order chosen. Shows what it will do first, and can be undone.">Arrange block</button>
+      </div>
+
+      <div class="terminal-two-col" style="align-items:flex-end; gap:8px; margin-bottom:6px;">
+        <div style="flex:none; width:90px;">
+          <label for="tbmAutoStart">Start at</label>
+          <input type="number" id="tbmAutoStart" value="1" min="1" max="999" step="1">
+        </div>
+        <button type="button" id="tbmAutoBtn" class="btn btn-ghost" style="flex:1;" onclick="autoPositionSelectedBlock()" title="Give this block's positions out in ascending order of the wire ID on each terminal">Auto-position by wire ID</button>
+      </div>
+
+      <div class="terminal-two-col" style="align-items:flex-end; gap:8px; margin-bottom:6px;">
+        <button type="button" id="tbmPackBtn" class="btn btn-ghost" style="flex:1;" onclick="packSelectedBlock()" title="Where a net has an internal and an external connection, put them on the two sides of one terminal, and close up the positions that frees. Shows what it will do first, and can be undone.">Pack connections</button>
+        <button type="button" id="tbmPackAllBtn" class="btn btn-ghost" style="flex:1;" onclick="packEveryBlock()" title="The same for every block in the project">Pack all blocks</button>
+        <button type="button" id="tbmResetSidesBtn" class="btn btn-ghost" style="flex:1;" onclick="resetBlockSides()" title="Terminals whose Side was fixed (by hand, or by packing) go back to working it out from their wire">Sides to Automatic</button>
+      </div>
+      <p id="tbmPackHint" class="modal-hint" style="margin-top:0;"></p>
+
+      <label>On this block</label>
+      <div id="tbmTerminals" class="tbm-list"></div>
+      <p id="tbmSummary" class="modal-hint"></p>
+    </div>
+
+    <p id="tbmUnassigned" class="modal-hint" style="display:none;"></p>
+    <p id="tbmMessage" class="modal-hint" style="display:none;"></p>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeTerminalBlockManager()">Close</button>
+      <button type="button" id="tbmSaveBtn" class="btn btn-primary" onclick="saveTerminalBlockChanges()">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PORTFOLIO VIEW ============ -->
+<div id="findModal" class="modal-overlay" style="z-index: 1015;">
+  <div class="modal-card" style="width: 640px; max-width: 94vw;">
+    <div class="modal-header">
+      <h3>Find in project</h3>
+      <button type="button" class="btn-icon" onclick="closeFindModal()">&#10005;</button>
+    </div>
+    <input type="text" id="findInput" placeholder="Designator, wire ID, terminal, part number, description&hellip;" autocomplete="off" oninput="onFindInput()" onkeydown="onFindKey(event)">
+    <div id="findResults" class="find-results"></div>
+    <p id="findCount" class="modal-hint"></p>
+  </div>
+</div>
+
+<div id="portfolioModal" class="modal-overlay" style="z-index: 1015;">
+  <div class="modal-card" style="width: 760px; max-width: 94vw;">
+    <div class="modal-header">
+      <h3>Portfolio</h3>
+      <button type="button" class="btn-icon" onclick="closePortfolioView()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Every sheet in the project. Tick a sheet to give it a tab, or untick it to keep the tab bar short on a big project &mdash; an unticked sheet is still in the project. Click a name to go to that sheet. Make <b>sections</b> (Power, Control, PLC I/O&hellip;) to organise the sheets as a tree, with sections inside sections. Drag a sheet onto a section to put it in there, or drag a section onto another to nest it. A section shows as a chip in the tab bar that collapses its tabs. Set a <b>review state</b> on each row, and use &#10697; to duplicate a sheet.</p>
+    <div class="portfolio-filter">
+      <input type="text" id="portfolioSearch" placeholder="Search sheets by name, description, =function or location" autocomplete="off">
+      
+      <select id="portfolioReviewFilter" title="Show only sheets in one review state">
+        <option value="*">All review states</option>
+        <option value="check">Needs checking</option>
+        <option value="draft">Draft</option>
+        <option value="checked">Checked</option>
+        <option value="approved">Approved</option>
+        <option value="">Not set</option>
+      </select>
+      
+      
+      <button type="button" class="btn btn-ghost" onclick="portfolioNewSection()" title="Add a section to organise the sheets">+ Section</button>
+      <button type="button" class="btn btn-ghost" onclick="portfolioFoldAll(true)" title="Fold every section away">Fold all</button>
+      <button type="button" class="btn btn-ghost" onclick="portfolioFoldAll(false)" title="Open every section">Unfold all</button>
+      
+      <button type="button" class="btn btn-ghost" onclick="renumberProject()" title="Bring part designators and automatic wire IDs into line with the order of the sheets">Renumber sheets</button>
+    </div>
+    <div id="portfolioList" class="portfolio-list"></div>
+    <datalist id="portfolioGroupList"></datalist>
+    <p id="portfolioSummary" class="modal-hint"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="portfolioOnlyCurrent()" title="Close every tab except the sheet you are on">Only this sheet</button>
+      <button type="button" class="btn btn-ghost" onclick="portfolioShowAll()">Show all tabs</button>
+      <button type="button" id="portfolioShowMatchingBtn" class="btn btn-ghost" onclick="portfolioShowMatching()" title="Give tabs to the sheets found by the search, and close the rest">Tabs for matches only</button>
+      <button type="button" class="btn btn-primary" onclick="closePortfolioView()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SYMBOL STUDIO MODAL ============ -->
+<div id="symbolModal" class="modal-overlay">
+  <div class="modal-card modal-content">
+    <div class="modal-header">
+      <h3>Interactive Symbol Creator</h3>
+      <button type="button" class="btn-icon" onclick="closeSymbolCreator()">&#10005;</button>
+    </div>
+
+    <div class="modal-row" style="margin-bottom:12px;">
+      <input id="symName" type="text" placeholder="Symbol Name (e.g. Diode)" style="flex:2; font-size:18px; font-weight:600;">
+      <input id="symPrefix" type="text" placeholder="Prefix (D)" style="flex:1;">
+      <input id="symValue" type="text" placeholder="Default Val (1N4148)" style="flex:1;">
+    </div>
+
+    <div class="modal-row" style="margin-bottom:12px; align-items:center;">
+      <label for="symLibrary" style="white-space:nowrap; font-size:12px; font-weight:600;">Save to library</label>
+      <select id="symLibrary" onchange="handleSymbolLibraryChange(this, this.dataset.prevValue)" onfocus="this.dataset.prevValue = this.value" style="flex:1;" title="Every symbol is saved into a library, which keeps your symbols organised in the sidebar. Pick one you already have, or choose + New library."></select>
+    </div>
+
+    <div class="studio-toolbar">
+      <span class="label">Tools:</span>
+      <button type="button" class="btn" onclick="setStudioTool('line')">Line</button>
+      <label style="margin-left:6px;">Line Style</label>
+      <select onchange="window.setStudioLineStyle(this.value)" style="width:auto;">
+        <option value="solid">Solid</option>
+        <option value="dashed">Dashed</option>
+        <option value="dotted">Dotted</option>
+      </select>
+
+      <button type="button" class="btn" onclick="setStudioTool('rect')">Rectangle</button>
+      <button type="button" class="btn" onclick="setStudioTool('circle')">Circle</button>
+      <button type="button" class="btn" onclick="setStudioTool('arc')" title="Click to set center, click for radius, click for end angle">Arc</button>
+      <button type="button" class="btn" onclick="setStudioTool('pin')">Add Pin</button>
+      <button type="button" class="btn" onclick="setStudioTool('text')">🔤 Text</button>
+
+      <div class="toolbar-divider"></div>
+      <button id="studioUndoBtn" type="button" class="btn btn-ghost" onclick="undoStudio()" disabled title="Undo (Ctrl+Z)">↶ Undo</button>
+      <button id="studioRedoBtn" type="button" class="btn btn-ghost" onclick="redoStudio()" disabled title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+
+      <div class="toolbar-divider"></div>
+      <button type="button" class="btn btn-ghost" onclick="copySelectedStudioElements()" title="Copy (Ctrl+C)">⧉ Copy</button>
+      <button type="button" class="btn btn-ghost" onclick="cutSelectedStudioElements()" title="Cut (Ctrl+X)">✂ Cut</button>
+      <button type="button" class="btn btn-ghost" onclick="pasteStudioClipboard()" title="Paste (Ctrl+V)">📋 Paste</button>
+      <button type="button" class="btn btn-warning" onclick="rotateSelectedStudioElements()" title="Rotate selection 90° (R)">↻ Rotate</button>
+
+      <div class="toolbar-divider"></div>
+      <span id="studioZoomIndicator" style="font-size:12px; color:var(--text-muted); min-width:38px; text-align:center;">100%</span>
+      <button type="button" class="btn" onclick="resetStudioView()" title="Reset zoom/pan">⤢ Reset View</button>
+
+      <div class="toolbar-spacer"></div>
+      <button type="button" class="btn btn-danger" onclick="clearStudioCanvas()">Clear</button>
+    </div>
+
+    <p class="modal-hint">Snaps to the regular 10px grid below 1000% zoom; from 1000% up there is no snapping, so fine detail can be placed freely. Pins always snap to the regular grid, at any zoom. With no tool selected: drag on empty canvas to select multiple items (shift-click to add/remove one), hold Space and drag to pan instead. Ctrl+C/X/V to copy, cut, and paste the selection. Double-click text to edit it; press R (or the Rotate button) to rotate the selection 90°. Arc is click-based: click for center, click for radius, click for end angle.</p>
+
+    <div class="symbol-studio-body">
+      <div id="studioCanvasContainer"></div>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeSymbolCreator()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="saveCustomSymbol()">Save Symbol</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COMPONENT EDIT MODAL ============ -->
+<div id="editComponentModal" class="modal-overlay">
+  <div class="modal-card" style="width: 460px; max-height: 85vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3>Edit Component Details</h3>
+      <button type="button" class="btn-icon" onclick="closeEditModal()">&#10005;</button>
+    </div>
+
+    <label for="editCompLabel">Designator</label>
+    <input type="text" id="editCompLabel">
+
+    <label for="editCompValue">Value / Rating</label>
+    <input type="text" id="editCompValue">
+
+    <div id="editMakeModelDesc">
+    <div id="partsLibRow" style="display:flex; gap:6px; margin:4px 0 2px;">
+      
+      <button type="button" class="btn btn-ghost" style="padding:2px 10px; font-size:12px;" onclick="pickPartForEdit()">From parts library</button>
+      <button type="button" class="btn btn-ghost" style="padding:2px 10px; font-size:12px;" onclick="savePartFromEdit()">Save to parts library</button>
+      
+    </div>
+    <label for="editCompMake">Make</label>
+    <input type="text" id="editCompMake" placeholder="e.g. Siemens">
+
+    <label for="editCompModel">Model / Part No.</label>
+    <input type="text" id="editCompModel">
+
+    <label for="editCompDesc">Description</label>
+    <input type="text" id="editCompDesc">
+    </div>
+
+    <div id="editNoteRow" style="display:none;">
+      <label for="editCompNote">Note <span style="font-weight:400; color:var(--text-muted); font-size:11px;">&mdash; shown under the module on the sheet</span></label>
+      <input type="text" id="editCompNote" maxlength="80" placeholder="e.g. Fitted in MCC 2, feeds the mixer" autocomplete="off">
+      <p class="modal-hint" style="margin:2px 0 0;">The make, model and description are set in the creator, so every copy of this module shares them.</p>
+    </div>
+
+    <label style="margin-top:8px;">Show on the sheet</label>
+    <div style="display:flex; flex-wrap:wrap; gap:4px 14px; font-size:13px;">
+      <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="editShowDesignator" checked style="width:auto;"> Designator</label>
+      <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="editShowValue" checked style="width:auto;"> Value</label>
+      <label id="editShowModelLbl" style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="editShowModel" checked style="width:auto;"> Part No.</label>
+      <label id="editShowDescLbl" style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="editShowDesc" checked style="width:auto;"> Description</label>
+      <label id="editShowRefLbl" style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="editShowRef" checked style="width:auto;"> Cross-reference</label>
+    </div>
+    <p class="modal-hint" style="margin:2px 0 0;">Untick to hide a field on the sheet. It is still kept, and still appears in the BOM. <b>Cross-reference</b> is the “Ref:” line on a child and the list of child contacts on a parent.</p>
+
+    <label for="editCompLocation">Location</label>
+    <select id="editCompLocation" onchange="handleLocationSelectChange(this, this.dataset.prevValue, null, { includeNone: true, noneLabel: '-- Inherits from sheet --' })" onfocus="this.dataset.prevValue = this.value" title="Overrides the sheet's own location for just this component — leave as Inherits unless this part is physically somewhere else">
+      <option value="">-- Inherits from sheet --</option>
+    </select>
+
+    <div class="modal-checkbox-row">
+      <input type="checkbox" id="editCompIsParent" onchange="toggleParentOptions(this.checked)">
+      <label for="editCompIsParent">Parent Component</label>
+    </div>
+
+    <div id="jointRow" style="display:none;">
+      <label for="editCompJointTo">Mechanically joined to</label>
+      <select id="editCompJointTo" onchange="refreshEditModalDerivedFields()"></select>
+      <div class="modal-hint">For a forward/reverse contactor: one physical device with two coils. Choose the other coil and this one shares its part details, so the pair is a single line on the BOM.</div>
+    </div>
+
+    <div id="linkChildrenRow" class="modal-checkbox-row" style="display:none;">
+      <input type="checkbox" id="editCompLinkChildren">
+      <label for="editCompLinkChildren">Draw a dotted line to its child contacts (on this sheet)</label>
+    </div>
+
+    <div id="parentRefRow">
+      <label for="editCompParentId">Parent Designation</label>
+      <select id="editCompParentId" onchange="refreshEditModalDerivedFields()"></select>
+    </div>
+
+    <div id="contactAssignRow" style="display:none;">
+      <label for="editCompContactRef">Parent contact</label>
+      <select id="editCompContactRef" onchange="onContactRefChange()"></select>
+      <div class="modal-hint" id="contactAssignHint">Which contact of the parent this is. Its terminal numbers are shown on the symbol.</div>
+    </div>
+
+    <div id="linkRow" style="display:none;">
+      <label for="editCompLinkTo">Mechanically linked to</label>
+      <select id="editCompLinkTo" onchange="this.dataset.initial = this.value"></select>
+      <div class="modal-hint">For the contacts of a forward/reverse contactor: draws the interlock link (a line with a diamond) between this contact block and the one on the other coil.</div>
+    </div>
+
+    <input type="hidden" id="editCompContactNo">
+
+    <div id="terminalFillRow" style="display:none;">
+      <label for="editCompFillColor">Fill Colour</label>
+      <input type="color" id="editCompFillColor" value="#ffffff" style="height:32px; padding:2px; cursor:pointer;">
+    </div>
+
+    <div id="auxItemsSection">
+      <div id="selfContactRow" style="display:none; margin-bottom:10px;">
+        <label for="editCompSelfContact">This symbol is contact</label>
+        <select id="editCompSelfContact" onfocus="refreshSelfContact()"></select>
+        <div class="modal-hint">Which contact of this part the symbol itself stands for, e.g. the NO contact of the contact block fitted to the button body. Its terminal numbers are shown on the symbol. Add the contacts under Contacts below first. Each contact block or lamp is a component of its own: drop a child contact, give it this part as its parent, and enter its make and part number there.</div>
+      </div>
+      <div id="ownContactsBlock" style="margin-bottom:10px;">
+        <label>Contacts <span style="font-weight:400; color:var(--text-muted); font-size:11px;">— the contacts this part has: control (NO, NC) and 3-pole power. A child contact is assigned one of them and shows its terminal numbers</span></label>
+        <div id="ownContactsList" style="display:flex; flex-direction:column; gap:4px; margin-bottom:6px;"></div>
+        <div style="display:flex; gap:6px;">
+          <button type="button" class="btn btn-ghost" style="padding:2px 10px;" id="ownBtnNo" onclick="addOwnContactRow('no')">+ NO contact</button>
+          <button type="button" class="btn btn-ghost" style="padding:2px 10px;" id="ownBtnNc" onclick="addOwnContactRow('nc')">+ NC contact</button>
+          <button type="button" id="ownBtnSol" class="btn btn-ghost" style="padding:2px 10px; display:none;" onclick="addOwnContactRow('sol')">+ Valve coil (solenoid)</button>
+          <button type="button" id="ownBtnLamp" class="btn btn-ghost" style="padding:2px 10px; display:none;" onclick="addOwnContactRow('lamp')">+ Lamp</button>
+          <button type="button" id="ownBtnP3" class="btn btn-ghost" style="padding:2px 10px;" onclick="addOwnContactRow('p3')">+ 3-pole power contact</button>
+        </div>
+      </div>
+      <div id="auxItemsBlock">
+      <label>Auxiliary Items <span style="font-weight:400; color:var(--text-muted); font-size:11px;">— accessories fitted to this parent (e.g. an auxiliary contact block), each its own BOM line, with contacts of its own</span></label>
+      <div id="auxItemsList" style="display:flex; flex-direction:column; gap:6px; margin-bottom:8px;"></div>
+      <button type="button" class="btn btn-ghost" style="width:100%;" onclick="addAuxItemRow()">+ Add auxiliary item</button>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveComponentDetails()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WIRE EDIT MODAL ============ -->
+<div id="editWireModal" class="modal-overlay">
+  <div class="modal-card" style="width: 360px;">
+    <div class="modal-header">
+      <h3>Edit Wire</h3>
+      <button type="button" class="btn-icon" onclick="closeWireEditModal()">&#10005;</button>
+    </div>
+
+    <label for="editWireId">Wire ID / Net Name</label>
+    <input type="text" id="editWireId" placeholder="e.g. 24V, 0V, PE">
+    <p class="modal-hint">Applies to every wire segment this one is connected to. Leave blank to go back to automatic numbering.</p>
+
+    <label style="display:flex; align-items:center; gap:8px; font-weight:400; cursor:pointer; margin-top:6px;">
+      <input type="checkbox" id="editWireOnlyNet" style="width:auto; margin:0;"> Rename only this net (leave other nets and sheets that share the name alone)
+    </label>
+
+    <label style="display:flex; align-items:center; gap:8px; font-weight:600; cursor:pointer; margin-top:10px;">
+      <input type="checkbox" id="editWireHideId" style="width:auto; margin:0;"> Hide this wire's ID on the sheet
+    </label>
+    <label style="display:flex; align-items:center; gap:8px; font-weight:400; cursor:pointer; margin-top:6px;">
+      <input type="checkbox" id="editWireHideAll" style="width:auto; margin:0;"> Do this for every wire on this sheet with the same ID
+    </label>
+    <p class="modal-hint">Hiding only removes the label from the drawing. The ID is kept and still used by terminals and terminal tables.</p>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeWireEditModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveWireDetails()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SHEET TEXT BOX MODAL ============ -->
+<div id="textBoxModal" class="modal-overlay">
+  <div class="modal-card" style="width: 380px;">
+    <div class="modal-header">
+      <h3>Text Box</h3>
+      <button type="button" class="btn-icon" onclick="closeTextBoxModal()">&#10005;</button>
+    </div>
+
+    <label for="tbContent">Content</label>
+    <textarea id="tbContent" rows="3" style="width:100%; background:var(--bg-field); border:1px solid var(--border-light); color:var(--text); padding:7px 10px; border-radius:var(--radius-sm); font-size:13px; margin-bottom:10px; font-family:inherit; resize:vertical;"></textarea>
+
+    <div class="modal-row">
+      <div>
+        <label for="tbFontFamily">Font</label>
+        <select id="tbFontFamily">
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="'Segoe UI', sans-serif">Segoe UI</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="Verdana, sans-serif">Verdana</option>
+        </select>
+      </div>
+      <div>
+        <label for="tbFontSize">Size</label>
+        <input type="number" id="tbFontSize" value="14" min="6" max="72">
+      </div>
+    </div>
+
+    <label>Style</label>
+    <div class="toolbar-group" style="margin-bottom:12px;">
+      <button type="button" id="tbBoldBtn" class="btn btn-ghost" onclick="toggleTextBoxStyle('bold')" style="font-weight:700;">B</button>
+      <button type="button" id="tbItalicBtn" class="btn btn-ghost" onclick="toggleTextBoxStyle('italic')" style="font-style:italic;">I</button>
+      <button type="button" id="tbUnderlineBtn" class="btn btn-ghost" onclick="toggleTextBoxStyle('underline')" style="text-decoration:underline;">U</button>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeTextBoxModal()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="saveTextBoxModal()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMINAL MODAL: the Terminal tool, and double-clicking a terminal ============ -->
+<div id="terminalModal" class="modal-overlay" style="z-index: 1020;">
+  <div class="modal-card" style="width: 400px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3 id="terminalModalTitle">Place Terminal</h3>
+      <button type="button" class="btn-icon" onclick="closeTerminalModal()">&#10005;</button>
+    </div>
+
+    <label>Type</label>
+    <div class="terminal-kind-row">
+      <label class="terminal-kind-option"><input type="radio" name="terminalKind" id="terminalKindStandard" value="standard" checked> Standard</label>
+      <label class="terminal-kind-option"><input type="radio" name="terminalKind" id="terminalKindPE" value="pe"> PE (protective earth)</label>
+    </div>
+
+    <label for="terminalSide">Side <span style="font-weight:400;">(which connection of the terminal this is)</span></label>
+    <select id="terminalSide" onchange="onTerminalSideChange()" title="A terminal has two connection points per level: internal (the panel side) and external (the field side). An internal and an external symbol can share one position. Automatic decides from the location of what the wire goes to; Pack connections in the Terminal Blocks window uses this to use as few positions as possible.">
+      <option value="auto">Automatic &mdash; from the location of what it connects to</option>
+      <option value="internal">Internal &mdash; the panel side</option>
+      <option value="external">External &mdash; the field side</option>
+    </select>
+    <p id="terminalSideNote" class="modal-hint" style="display:none;"></p>
+
+    <label for="terminalBlockSelect">Terminal block</label>
+    <select id="terminalBlockSelect" onchange="onTerminalBlockChange()"></select>
+
+    <div id="terminalNewBlockRow" style="display:none;">
+      <label for="terminalNewBlockName">New block name</label>
+      <input type="text" id="terminalNewBlockName" maxlength="20" placeholder="e.g. X1, X2, TB1" autocomplete="off" oninput="onTerminalNewBlockInput()">
+    </div>
+
+    <label for="terminalBlockDescription">Block description <span style="font-weight:400;">(optional)</span></label>
+    <input type="text" id="terminalBlockDescription" maxlength="40" placeholder="e.g. 24VDC, 0V, Motor feeds" autocomplete="off" title="Says what this block is for. It shows next to the block name when you choose a block, and on generated terminal tables. Changing it changes it for every terminal on the block.">
+
+    <!-- Always shown (greyed out and marked Pro on the Free plan). On an existing block, changing the location moves every terminal on it. -->
+    <div id="terminalLocationRow">
+      <label for="terminalLocationSelect" id="terminalLocationHeading">Location of this block</label>
+      <select id="terminalLocationSelect" onchange="onTerminalLocationChange()"></select>
+      <p id="terminalLocationNote" class="modal-hint" style="display:none; color:#fbbf24;"></p>
+    </div>
+
+    <div id="terminalLocationLabelRow">
+      <label for="terminalLocationLabel" id="terminalLocationLabelHeading">Label shows</label>
+      <select id="terminalLocationLabel" onchange="onTerminalLocationLabelChange()">
+        <option value="auto">Automatic</option>
+        <option value="show">Always show the location</option>
+        <option value="hide">Hide the location</option>
+        <option value="position">Position only</option>
+      </select>
+      <div id="terminalLocationLabelBlockRow" class="modal-checkbox-row" style="display:none; margin-top:-4px;">
+        <input type="checkbox" id="terminalLocationLabelBlock">
+        <label for="terminalLocationLabelBlock">Do this for every terminal on this block</label>
+      </div>
+    </div>
+
+    <!-- The model says how many levels the terminal has (and its part details). With no model, the levels are chosen here: only levels that exist can then be picked. -->
+    <div class="terminal-two-col">
+      <div style="flex:2;">
+        <label for="terminalModelSelect" id="terminalModelHeading">Terminal model</label>
+        <select id="terminalModelSelect" onchange="onTerminalModelChange()"></select>
+      </div>
+      <div style="flex:1.2;">
+        <label for="terminalLevelsSelect">Levels</label>
+        <select id="terminalLevelsSelect" onchange="onTerminalLevelsChange()"></select>
+      </div>
+    </div>
+
+    <div class="terminal-two-col">
+      <div style="flex:1;">
+        <label for="terminalPosition">Position on the block</label>
+        <input type="number" id="terminalPosition" min="1" max="999" step="1" oninput="onTerminalPositionInput()">
+      </div>
+      <div style="flex:1;">
+        <label for="terminalLevel" id="terminalLevelHeading">Level</label>
+        <select id="terminalLevel" onchange="onTerminalLevelChange()"></select>
+      </div>
+    </div>
+    <p id="terminalPositionHint" class="modal-hint"></p>
+
+    <p id="terminalFormError" class="modal-hint" style="color:#f87171; display:none;"></p>
+
+    <div class="modal-actions">
+      <button type="button" id="terminalDetailsBtn" class="btn btn-ghost" style="margin-right:auto; display:none;" onclick="openTerminalDetails()" title="Part number, make, description and fill colour">More details&hellip;</button>
+      <button type="button" class="btn btn-ghost" onclick="closeTerminalModal()">Cancel</button>
+      <button type="button" id="terminalModalConfirmBtn" class="btn btn-primary" onclick="confirmTerminalModal()">Place</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMINAL MODELS: a terminal type defined once and used wherever it appears ============ -->
+<div id="terminalModelsModal" class="modal-overlay" style="z-index: 1030;">
+  <div class="modal-card" style="width: 480px; max-width: 94vw;">
+    <div class="modal-header">
+      <h3>Terminal Models</h3>
+      <button type="button" class="btn-icon" onclick="closeTerminalModelsModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">A terminal type, defined once: its part details and how many levels it has. A terminal that uses it follows any change made here, on every sheet, and the BOM takes its details from it.</p>
+
+    <label for="tmList">Models in this project</label>
+    <select id="tmList" size="5" onchange="onTerminalModelListPick()" style="height:auto;"></select>
+
+    <label for="tmName">Name</label>
+    <input type="text" id="tmName" maxlength="40" placeholder="e.g. PTTB 2.5" autocomplete="off">
+
+    <div class="terminal-two-col">
+      <div style="flex:1;">
+        <label for="tmMake">Make</label>
+        <input type="text" id="tmMake" placeholder="e.g. Phoenix Contact" autocomplete="off">
+      </div>
+      <div style="flex:1;">
+        <label for="tmModelNo">Part number</label>
+        <input type="text" id="tmModelNo" placeholder="e.g. 3210596" autocomplete="off">
+      </div>
+    </div>
+
+    <label for="tmDescription">Description</label>
+    <input type="text" id="tmDescription" placeholder="e.g. Double-level feed-through terminal, 2.5 mm&sup2;" autocomplete="off">
+
+    <label for="tmLevels">Levels</label>
+    <select id="tmLevels"></select>
+
+    <p id="tmUsage" class="modal-hint"></p>
+    <p id="tmMessage" class="modal-hint" style="display:none;"></p>
+
+    <div class="terminal-two-col" style="gap:6px; flex-wrap:wrap; margin-bottom:6px;">
+      <button type="button" id="tmExportBtn" class="btn btn-ghost" title="Save every model in this project to a file, to use in another project" onclick="exportTerminalModels()">Save to file</button>
+      <button type="button" id="tmImportBtn" class="btn btn-ghost" title="Add the models from a saved file. Models you already have are never changed" onclick="chooseTerminalModelsFile()">Load from file</button>
+      <button type="button" id="tmStandardBtn" class="btn btn-ghost" title="Add the standard terminal models that are missing from this project" onclick="addStandardTerminalModelsFromForm()">Add standard set</button>
+      <input type="file" id="tmImportInput" accept=".json,application/json" style="display:none;" onchange="importTerminalModelsFile(event)">
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" id="tmDeleteBtn" class="btn btn-ghost" style="margin-right:auto; color:#f87171;" onclick="deleteTerminalModelFromForm()">Delete</button>
+      <button type="button" id="tmNewBtn" class="btn btn-ghost" onclick="newTerminalModelForm()">New</button>
+      <button type="button" class="btn btn-ghost" onclick="closeTerminalModelsModal()">Close</button>
+      <button type="button" id="tmSaveBtn" class="btn btn-primary" onclick="saveTerminalModelForm()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TERMINAL BLOCK GENERATOR MODAL ============ -->
+<div id="terminalBlockModal" class="modal-overlay">
+  <div class="modal-card" style="width: 420px; max-width: 94vw; max-height: 94vh; overflow-y: auto;">
+    <div class="modal-header" style="position: sticky; top: 0; z-index: 2; background: inherit;">
+      <h3>Terminal Block Generator</h3>
+      <button type="button" class="btn-icon" onclick="closeTerminalBlockModal()">&#10005;</button>
+    </div>
+
+    <label for="tbMode">Generate</label>
+    <select id="tbMode" onchange="toggleTerminalBlockMode()">
+      <option value="table">Terminal table, from the placed terminals</option>
+      <option value="sequential">Blank numbered strip (sequential range)</option>
+    </select>
+
+    <div id="tbTableFields">
+      <p id="tbTableInfo" class="modal-hint">A table with a column for each terminal block and a row for each position &mdash; and for each level of a double- or triple-level terminal &mdash; showing the wire ID(s) there, and the terminal model if there is one. It reads the terminals you have assigned to blocks, on every sheet.</p>
+      <label for="tbDesignator">Terminal block</label>
+      <select id="tbDesignator">
+        <option value="">All blocks</option>
+      </select>
+      <div class="modal-row">
+        <div>
+          <label for="tbOrder">Order</label>
+          <select id="tbOrder"><option value="asc">Ascending (1 at the top / left)</option><option value="desc">Descending</option></select>
+        </div>
+        <div>
+          <label for="tbLayout">Layout on the page</label>
+          <select id="tbLayout"><option value="vertical">Vertical (positions down the page)</option><option value="horizontal">Horizontal (positions across the page)</option></select>
+        </div>
+      </div>
+      <label style="display:flex; gap:8px; align-items:center; font-weight:400;"><input type="checkbox" id="tbDest" checked> Show where each wire comes from and goes to (origin / destination)</label>
+      <label style="display:flex; gap:8px; align-items:center; font-weight:400;"><input type="checkbox" id="tbSwap"> Put the external side on the left and the internal on the right</label>
+      <p class="modal-hint" style="margin-top:2px;">Origin / destination needs a single block chosen above: the internal wire's is on the left of each row and the external wire's on the right. The table keeps these settings and updates itself as the wiring changes.</p>
+      <p id="tbUnassignedInfo" class="modal-hint" style="display:none; color:#fbbf24;"></p>
+    </div>
+
+    <div id="tbNameFields" style="display:none;">
+      <label for="tbName">Block Name</label>
+      <input type="text" id="tbName" value="Terminal Block" placeholder="e.g. Terminal Block X1">
+
+      <label for="tbPrefix">Prefix</label>
+      <input type="text" id="tbPrefix" value="X" placeholder="X">
+    </div>
+
+    <div id="tbSequentialFields" style="display:none;">
+
+      <div class="modal-row">
+
+        <div>
+
+          <label for="tbCount"># of Terminals</label>
+
+          <input type="number" id="tbCount" value="10" min="1" max="100">
+
+        </div>
+
+        <div>
+
+          <label for="tbStart">Start Number</label>
+
+          <input type="number" id="tbStart" value="1">
+
+        </div>
+
+      </div>
+
+      <label for="tbSpacing">Spacing</label>
+
+      <input type="number" id="tbSpacing" value="20" min="10">
+
+
+
+      <label for="tbOrientation">Orientation</label>
+
+      <select id="tbOrientation">
+
+        <option value="vertical">Vertical</option>
+
+        <option value="horizontal">Horizontal</option>
+
+      </select>
+
+    </div>
+
+    <p id="tbFooterHint" class="modal-hint"></p>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeTerminalBlockModal()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="generateTerminalBlock()">Generate</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BILL OF MATERIALS MODAL ============ -->
+<div id="bomModal" class="modal-overlay">
+  <div class="modal-card" style="width: 820px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3>Bill of Materials</h3>
+      <button type="button" class="btn-icon" onclick="closeBOMModal()">&#10005;</button>
+    </div>
+    <div style="max-height: 60vh; overflow:auto; border:1px solid var(--border-light); border-radius:var(--radius-md);">
+      <table class="bom-table">
+        <thead>
+          <tr>
+            <th>Qty</th>
+            <th>Designators</th>
+            <th>Type</th>
+            <th>Value</th>
+            <th>Make</th>
+            <th>Model No.</th>
+            <th>Description</th>
+            <th>Sheet(s)</th>
+            <th>Panel</th>
+          </tr>
+        </thead>
+        <tbody id="bomTableBody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeBOMModal()">Close</button>
+      <button type="button" class="btn btn-success" onclick="exportBOMCsv()">⬇ Export CSV</button>
+    </div>
+  </div>
+</div>
+
+<div id="assignLocationModal" class="modal-overlay" style="z-index: 1020;">
+  <div class="modal-card" style="width: 380px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3>Location Boundary</h3>
+      <button type="button" class="btn-icon" onclick="cancelAssignLocation()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Components inside this box will be marked as belonging to the location you pick — their designators will show a "+ABBR-" prefix wherever it differs from the sheet's own.</p>
+    <label for="assignLocationSelect">Location</label>
+    <select id="assignLocationSelect" onchange="handleLocationSelectChange(this, this.dataset.prevValue)" onfocus="this.dataset.prevValue = this.value"></select>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="cancelAssignLocation()">Cancel (keep as a plain box)</button>
+      <button type="button" class="btn btn-primary" onclick="confirmAssignLocation()">Assign</button>
+    </div>
+  </div>
+</div>
+
+<div id="createLocationModal" class="modal-overlay" style="z-index: 1050;">
+  <div class="modal-card" style="width: 380px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3 id="createLocationModalTitle">New Location</h3>
+      <button type="button" class="btn-icon" onclick="closeCreateLocationModal()">&#10005;</button>
+    </div>
+    <label for="newLocationAbbr">Abbreviation</label>
+    <input type="text" id="newLocationAbbr" placeholder="e.g. CP">
+    <label for="newLocationDesc">Description</label>
+    <input type="text" id="newLocationDesc" placeholder="e.g. Control Panel">
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeCreateLocationModal()">Cancel</button>
+      <button type="button" id="createLocationModalConfirmBtn" class="btn btn-primary" onclick="confirmCreateLocation()">Create</button>
+    </div>
+  </div>
+</div>
+
+<div id="manageLocationsModal" class="modal-overlay" style="z-index: 1010;">
+  <div class="modal-card" style="width: 480px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3>Manage Locations</h3>
+      <button type="button" class="btn-icon" onclick="closeManageLocationsModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Edit or delete a location. Renaming its abbreviation updates it everywhere it's used automatically.</p>
+    <div id="manageLocationsList" style="max-height: 50vh; overflow:auto;"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="openCreateLocationModal()">+ New Location</button>
+      <button type="button" class="btn btn-primary" onclick="closeManageLocationsModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<div id="exportLibraryModal" class="modal-overlay">
+  <div class="modal-card" style="width: 440px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3>Export Library</h3>
+      <button type="button" class="btn-icon" onclick="closeExportLibraryModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Choose the library to export. Only the symbols in that library go into the file.</p>
+    <select id="exportLibrarySelect" style="width: 100%;"></select>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeExportLibraryModal()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="confirmExportLibrary()">Export</button>
+    </div>
+  </div>
+</div>
+
+<div id="browseLibrariesModal" class="modal-overlay">
+  <div class="modal-card" style="width: 480px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3>Browse Libraries</h3>
+      <button type="button" class="btn-icon" onclick="closeBrowseLibrariesModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Symbol libraries made available on this server — import one with a single click. New here? Start with Basic.</p>
+    <div id="browseLibrariesList" style="max-height: 50vh; overflow:auto;"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeBrowseLibrariesModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="sheetPropsModal" class="modal-overlay">
+  <div class="modal-card" style="width: 480px; max-height: 92vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3>Sheet Properties</h3>
+      <button type="button" class="btn-icon" onclick="closeSheetPropsModal()">&#10005;</button>
+    </div>
+
+    <div class="modal-row">
+      <div>
+        <label for="sizeSelect">Size</label>
+        <select id="sizeSelect" onchange="updateCurrentSheet()">
+          <option value="A4">A4</option>
+          <option value="A3" selected>A3</option>
+          <option value="A2">A2</option>
+        </select>
+      </div>
+      <div>
+        <label for="orientationSelect">Orientation</label>
+        <select id="orientationSelect" onchange="updateCurrentSheet()">
+          <option value="landscape" selected>Landscape</option>
+          <option value="portrait">Portrait</option>
+        </select>
+      </div>
+    </div>
+    <label for="lineColumnsSelect">Line numbers (when the project uses them)</label>
+    <select id="lineColumnsSelect" onchange="updateCurrentSheet()" title="Two columns splits the sheet down the middle: the left half is numbered 1 to n and the right half carries on from there">
+      <option value="1" selected>One column</option>
+      <option value="2">Two columns (left half, then right half)</option>
+    </select>
+
+    <label for="sheetWirePrefixInput">Wire ID prefix</label>
+    <input type="text" id="sheetWirePrefixInput" maxlength="4" oninput="updateCurrentSheet()" placeholder="Project default" autocomplete="off" title="Letters in front of this sheet's automatic wire numbers (W100, C204&hellip;). Empty uses the project's prefix.">
+
+    <label for="titleInput">Title</label>
+    <input type="text" id="titleInput" value="MAIN SCHEMATIC" oninput="updateCurrentSheet()">
+
+    <label for="descInput">Description</label>
+    <input type="text" id="descInput" value="POWER BOARD" oninput="updateCurrentSheet()">
+
+    <div class="modal-row">
+      <div>
+        <label for="authorInput">Author</label>
+        <input type="text" id="authorInput" value="" oninput="updateCurrentSheet()">
+      </div>
+      <div>
+        <label for="approvedInput">Approved</label>
+        <input type="text" id="approvedInput" value="" oninput="updateCurrentSheet()">
+      </div>
+    </div>
+
+    <div class="modal-row">
+      <div>
+        <label for="createdInput">Created</label>
+        <input type="text" id="createdInput" value="2026-09-15" oninput="updateCurrentSheet()">
+      </div>
+      <div>
+        <label for="locationInput">Site Address</label>
+        <input type="text" id="locationInput" value="" oninput="updateCurrentSheet()">
+      </div>
+    </div>
+
+    <label for="iecLocationSelect">Location</label>
+    <select id="iecLocationSelect" onchange="handleLocationSelectChange(this, this.dataset.prevValue, () => updateCurrentSheet())" onfocus="this.dataset.prevValue = this.value" title="The IEC-style designation this sheet's components belong to by default (e.g. +CP) — shown in the title block, and in any component's own designator that departs from it">
+      <option value="">-- None --</option>
+    </select>
+
+    <label for="customerInput">Customer</label>
+    <input type="text" id="customerInput" value="" oninput="updateCurrentSheet()">
+
+    
+    <div class="modal-subhead">Organising <span>(Pro)</span></div>
+    <div class="modal-row">
+      <div>
+        <label for="sheetFunctionInput">Function (=)</label>
+        <input type="text" id="sheetFunctionInput" maxlength="20" oninput="updateCurrentSheet()" placeholder="e.g. P1 for =P1" title="The function aspect of this sheet, written =P1. It shows on the tab, the Contents page, the title block and sheet references. The location (+CP) comes from Location above.">
+      </div>
+      <div>
+        <label for="sheetReviewSelect">Review</label>
+        <select id="sheetReviewSelect" onchange="updateCurrentSheet()" title="Where this sheet is in your checking process. A coloured dot shows on its tab, and Portfolio can filter by it.">
+          <option value="">Not set</option>
+          <option value="draft">Draft</option>
+          <option value="check">Needs checking</option>
+          <option value="checked">Checked</option>
+          <option value="approved">Approved</option>
+        </select>
+      </div>
+    </div>
+    <label for="sheetNoteInput">Note</label>
+    <textarea id="sheetNoteInput" rows="2" maxlength="500" oninput="updateCurrentSheet()" placeholder="A reminder for whoever checks this sheet (not printed)" ></textarea>
+
+    <div class="modal-subhead">Document details <span>(shown by the ISO 7200 title block)</span></div>
+    <label for="idNumberInput">Identification number</label>
+    <input type="text" id="idNumberInput" oninput="updateCurrentSheet()" placeholder="Worked out from the pattern in Project &amp; title block">
+    <div class="modal-row">
+      <div>
+        <label for="docTypeInput">Document type</label>
+        <input type="text" id="docTypeInput" list="docTypeList" oninput="updateCurrentSheet()" placeholder="Project default">
+      </div>
+      <div>
+        <label for="docStatusInput">Status</label>
+        <input type="text" id="docStatusInput" list="docStatusList" oninput="updateCurrentSheet()" placeholder="Project default">
+      </div>
+    </div>
+    <label for="languageInput">Language</label>
+    <input type="text" id="languageInput" list="languageList" maxlength="10" oninput="updateCurrentSheet()" placeholder="Project default">
+    <datalist id="docTypeList"></datalist><datalist id="docStatusList"></datalist><datalist id="languageList"></datalist>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeSheetPropsModal(); duplicateSheet()" title="Make one or more copies of this sheet with their own sheet number and part designators">Duplicate sheet&hellip;</button>
+      <button type="button" class="btn btn-ghost" onclick="closeSheetPropsModal(); openProjectInfoModal()">Project &amp; title block&hellip;</button>
+      <button type="button" class="btn btn-primary" onclick="closeSheetPropsModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<div id="arrowNoteModal" class="modal-overlay" style="z-index: 1020;">
+  <div class="modal-card" style="width: 460px; max-height: 92vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3>Arrow note</h3>
+      <button type="button" class="btn-icon" onclick="closeArrowNoteEditor()">&#10005;</button>
+    </div>
+    <div class="modal-row">
+      <div><label for="arrowNoteHeadStyle">Arrowhead</label><select id="arrowNoteHeadStyle"><option value="filled">Filled</option><option value="open">Open</option><option value="circle">Dot</option><option value="bar">Bar</option></select></div>
+      <div><label for="arrowNoteHeadEnds">Heads on</label><select id="arrowNoteHeadEnds"><option value="end">End</option><option value="both">Both ends</option><option value="start">Start</option></select></div>
+    </div>
+    <div class="modal-row">
+      <div><label for="arrowNoteWeight">Thickness</label><select id="arrowNoteWeight"><option value="0.5">Thin</option><option value="1">Medium</option><option value="1.5">Thick</option></select></div>
+      <div><label for="arrowNoteHeadSize">Head size</label><select id="arrowNoteHeadSize"><option value="0.7">Small</option><option value="1">Normal</option><option value="1.5">Large</option><option value="2">Extra large</option><option value="3">Huge</option></select></div>
+    </div>
+    <hr style="border:none; border-top:1px solid #e2e8f0; margin:10px 0;">
+    <label for="arrowNoteText">Note</label>
+    <textarea id="arrowNoteText" rows="4" maxlength="500" style="width:100%; box-sizing:border-box; resize:vertical;" placeholder="Text shown beside the arrow"
+      onkeydown="if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) { saveArrowNote(false); }"></textarea>
+    <div class="modal-row">
+      <div>
+        <label for="arrowNoteFont">Font</label>
+        <select id="arrowNoteFont">
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="'Segoe UI', sans-serif">Segoe UI</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="Verdana, sans-serif">Verdana</option>
+        </select>
+      </div>
+      <div>
+        <label for="arrowNoteSize">Size</label>
+        <input type="number" id="arrowNoteSize" value="12" min="6" max="72">
+      </div>
+    </div>
+    <div class="modal-row">
+      <div>
+        <label>Style</label>
+        <div class="toolbar-group">
+          <button type="button" id="arrowNoteBold" class="btn btn-ghost" onclick="toggleArrowNoteStyle('bold')" style="font-weight:700;">B</button>
+          <button type="button" id="arrowNoteItalic" class="btn btn-ghost" onclick="toggleArrowNoteStyle('italic')" style="font-style:italic;">I</button>
+          <button type="button" id="arrowNoteUnderline" class="btn btn-ghost" onclick="toggleArrowNoteStyle('underline')" style="text-decoration:underline;">U</button>
+        </div>
+      </div>
+      <div>
+        <label for="arrowNoteColor">Colour</label>
+        <select id="arrowNoteColor">
+          <option value="#0f172a">Black</option>
+          <option value="#2563eb">Blue</option>
+          <option value="#dc2626">Red</option>
+          <option value="#16a34a">Green</option>
+          <option value="#d97706">Orange</option>
+          <option value="#64748b">Grey</option>
+        </select>
+      </div>
+    </div>
+    <label style="display:flex; align-items:center; gap:8px; margin-top:6px;"><input type="checkbox" id="arrowNoteBox" checked> Draw a box around the note</label>
+    <div class="modal-hint">Drag the note on the sheet to move it. Double-click the arrow or the note to edit it again. Ctrl+Enter to save.</div>
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+      <button type="button" class="btn btn-ghost" id="arrowNoteRemove" onclick="saveArrowNote(true)">Remove note</button>
+      <button type="button" class="btn btn-ghost" onclick="closeArrowNoteEditor()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="saveArrowNote(false)">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="projectInfoModal" class="modal-overlay">
+  <div class="modal-card" style="width: 520px; max-height: 92vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3>Project &amp; title block</h3>
+      <button type="button" class="btn-icon" onclick="closeProjectInfoModal()">&#10005;</button>
+    </div>
+
+    <label for="tbTemplateSelect">Title block</label>
+    <select id="tbTemplateSelect" onchange="updateProjectInfo()">
+      <option value="standard">Standard</option>
+      <option value="iso7200">ISO 7200</option>
+      <option value="custom" disabled>Custom design</option>
+    </select>
+    <div class="modal-hint" id="tbTemplateHint"></div>
+    <button type="button" class="btn btn-ghost" id="tbDesignBtn" onclick="openTitleBlockDesigner()" title="Draw your own title block, starting from the one you have now">Design your own&hellip;</button>
+
+    <div class="modal-subhead">Company</div>
+    <label for="piLegalOwner">Legal owner</label>
+    <input type="text" id="piLegalOwner" maxlength="120" oninput="updateProjectInfo()" placeholder="The company that owns the drawing">
+    <div class="modal-hint">The logo is set with <b>Set Logo</b> on the Insert tab.</div>
+
+    <div class="modal-subhead">Project</div>
+    <div class="modal-row">
+      <div>
+        <label for="piProjectNumber">Project number</label>
+        <input type="text" id="piProjectNumber" maxlength="40" oninput="updateProjectInfo()">
+      </div>
+      <div>
+        <label for="piCustomer">Customer</label>
+        <input type="text" id="piCustomer" maxlength="80" oninput="updateProjectInfo()">
+      </div>
+    </div>
+    <label for="piSite">Site</label>
+    <input type="text" id="piSite" maxlength="80" oninput="updateProjectInfo()">
+    <div class="modal-hint">A sheet's own Customer and Site Address, if filled in, are used instead.</div>
+
+    <div class="modal-subhead">Document numbers</div>
+    <div class="modal-row">
+      <div>
+        <label for="piDocPrefix">Prefix</label>
+        <input type="text" id="piDocPrefix" maxlength="20" oninput="updateProjectInfo()">
+      </div>
+      <div>
+        <label for="piDocPattern">Pattern</label>
+        <input type="text" id="piDocPattern" maxlength="60" oninput="updateProjectInfo()" placeholder="{project}-{sheet:3}">
+      </div>
+    </div>
+    <div class="modal-hint">Use {prefix} {project} {sheet} {sheet:3} (padded to 3 digits) and {total}, plus {function} and {location} from a sheet's =function and location. Preview: <b id="piDocPreview"></b></div>
+
+    <div class="modal-subhead">Wire IDs</div>
+    <label for="piWireIdPrefix">Prefix letter(s) <span style="font-weight:400;">(optional)</span></label>
+    <input type="text" id="piWireIdPrefix" maxlength="4" oninput="updateProjectInfo()" placeholder="e.g. W gives W100, W101&hellip;" autocomplete="off">
+    <div class="modal-hint">Put letters in front of the automatic wire numbers. Existing automatic IDs take the prefix and keep their numbers; cable assignments follow. IDs you typed yourself are never changed. A sheet can use a different prefix in its Sheet Properties (for example <i>C</i> on control sheets).</div>
+
+    <div class="modal-subhead">Defaults for every sheet</div>
+    <div class="modal-row">
+      <div>
+        <label for="piDocType">Document type</label>
+        <input type="text" id="piDocType" list="docTypeList" maxlength="40" oninput="updateProjectInfo()">
+      </div>
+      <div>
+        <label for="piDocStatus">Status</label>
+        <input type="text" id="piDocStatus" list="docStatusList" maxlength="30" oninput="updateProjectInfo()">
+      </div>
+    </div>
+    <label for="piLanguage">Language</label>
+    <input type="text" id="piLanguage" list="languageList" maxlength="10" oninput="updateProjectInfo()">
+
+    <div class="modal-subhead">Cross-references</div>
+    <label for="piRefStyle">Cross-reference style</label>
+    <select id="piRefStyle" onchange="updateProjectInfo()">
+      <option value="grid">Sheet and grid square (Sh.3/B4)</option>
+      <option value="lines">Line numbers (312)</option>
+    </select>
+    <div class="modal-hint">How a contact, a wire continuing on another sheet or a report points to a place. Line numbers put a number on every line down both margins of a schematic sheet; sheet 3, line 12 is 312.</div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-primary" onclick="closeProjectInfoModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<div id="tbDesigner" class="modal-overlay" style="z-index: 1050;">
+  <div class="modal-card tbd-card">
+    <div class="modal-header">
+      <h3>Title block designer</h3>
+      <button type="button" class="btn-icon" onclick="closeTitleBlockDesigner()">&#10005;</button>
+    </div>
+    <div class="tbd-bar tbd-files">
+      <button type="button" class="btn btn-ghost" onclick="openTitleBlockTemplates()" title="Save this design to your account, or open one you saved earlier">My designs&hellip;</button>
+      <button type="button" class="btn btn-ghost" onclick="exportTitleBlockFile()" title="Save this design as a file to keep or send to someone">Export file</button>
+      <button type="button" class="btn btn-ghost" onclick="importTitleBlockFile()" title="Open a title block design file">Import file</button>
+      <input type="file" id="tbdFileInput" accept=".json,application/json" style="display:none">
+    </div>
+    <div id="tbdBar" class="tbd-bar"></div>
+    <div class="tbd-main">
+      <div id="tbdCanvas" class="tbd-canvas"></div>
+      <div id="tbdProps" class="tbd-props"></div>
+    </div>
+    <div class="modal-hint">Fields in curly brackets, such as {title} or {docNumber}, are filled in from the sheet and project. The board shows this sheet's values; tick <b>Show field names</b> to see the brackets.</div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeTitleBlockDesigner()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="applyTitleBlockDesign()">Apply to project</button>
+    </div>
+  </div>
+</div>
+
+<div id="tbtModal" class="modal-overlay" style="z-index: 1060;">
+  <div class="modal-card" style="width: 480px; max-height: 92vh; overflow-y: auto;">
+    <div class="modal-header">
+      <h3>My title block designs</h3>
+      <button type="button" class="btn-icon" onclick="closeTitleBlockTemplates()">&#10005;</button>
+    </div>
+    <label for="tbtName">Save the design on the board as</label>
+    <div class="tbt-save">
+      <input type="text" id="tbtName" maxlength="80" placeholder="e.g. Company standard" onkeydown="if(event.key==='Enter')saveTitleBlockTemplate()">
+      <button type="button" class="btn btn-primary" onclick="saveTitleBlockTemplate()">Save</button>
+    </div>
+    <div class="modal-hint">Saved designs belong to your account and can be used in any project. A logo is not part of a design: it stays with the project.</div>
+    <div class="tbd-h3">Saved designs</div>
+    <div id="tbtList"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeTitleBlockTemplates()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="appDialogModal" class="modal-overlay" style="z-index: 1200;">
+  <div class="modal-card" style="width: 420px;">
+    <div class="modal-header">
+      <h3 id="appDialogTitle">Notice</h3>
+    </div>
+    <p id="appDialogMessage" style="white-space: pre-line; font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height:1.5;"></p>
+    <input type="text" id="appDialogInput" style="display:none;" onkeydown="if(event.key==='Enter'){event.preventDefault(); handleDialogOk();}">
+    <div class="modal-actions">
+      <button type="button" id="appDialogCancelBtn" class="btn btn-ghost" onclick="handleDialogCancel()">Cancel</button>
+      <button type="button" id="appDialogOkBtn" class="btn btn-primary" onclick="handleDialogOk()">OK</button>
+    </div>
+  </div>
+</div>
+
+<div id="myProjectsModal" class="modal-overlay">
+  <div class="modal-card" id="myProjectsCard" style="width: 520px; max-width: 94vw;">
+    <div class="modal-header">
+      <h3 id="myProjectsTitle">My Projects</h3>
+      <button type="button" class="btn-icon" onclick="closeMyProjectsModal()">&#10005;</button>
+    </div>
+
+    <div id="projectSaveAsBar" class="projects-saveas" style="display:none;">
+      <input type="text" id="projectSaveAsName" maxlength="191" placeholder="Name for the copy" onkeydown="if (event.key === 'Enter') { event.preventDefault(); confirmSaveAs(); }">
+      <span id="projectSaveAsWhere" class="projects-saveas-where"></span>
+      <button type="button" class="btn btn-primary" onclick="confirmSaveAs()">Save here</button>
+    </div>
+
+    <div id="projectsToolbar" class="projects-toolbar" style="display:none;">
+      <input type="search" id="projectSearch" placeholder="Search name, folder or tag&hellip;" oninput="setProjectView('q', this.value)">
+      <select id="projectSort" onchange="setProjectView('sort', this.value)" title="Sort">
+        <option value="updated">Recently edited</option>
+        <option value="name">Name</option>
+        <option value="oldest">Oldest first</option>
+      </select>
+      <select id="projectStatusFilter" onchange="setProjectView('status', this.value)" title="Show projects with this status">
+        <option value="active">All except archived</option>
+        <option value="draft">Draft</option>
+        <option value="review">In review</option>
+        <option value="issued">Issued</option>
+        <option value="archived">Archived</option>
+        <option value="all">Everything</option>
+      </select>
+    </div>
+
+    <div class="projects-body">
+      <div id="projectFolders" class="projects-folders" style="display:none;"></div>
+      <div id="myProjectsList" class="projects-list"></div>
+    </div>
+
+    <p id="projectsProTeaser" class="modal-hint" style="display:none;">Folders, search, status and tags, duplicating projects and templates are included with <a href="/auth/account.php" style="color:var(--accent);">Pro</a>.</p>
+    <div id="projectTemplates" class="projects-templates" style="display:none;"></div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeMyProjectsModal()">Close</button>
+      <button type="button" class="btn btn-ghost" id="projectsSaveTemplateBtn" style="display:none;" onclick="saveCurrentAsTemplate()" title="Keep a copy of the project you are working on, to start new jobs from">Save as template</button>
+      <button type="button" class="btn btn-ghost" id="projectsSaveAsBtn" onclick="saveProjectAsToServer()" title="Save a copy of the open project under a new name, in a folder you choose">Save As&hellip;</button>
+      <button type="button" class="btn btn-primary" id="projectsNewBtn" onclick="closeMyProjectsModal(); startNewProject();">+ New Project</button>
+    </div>
+  </div>
+</div>
+
+<div id="projectDetailsModal" class="modal-overlay">
+  <div class="modal-card" style="width: 400px;">
+    <div class="modal-header">
+      <h3>Project details</h3>
+      <button type="button" class="btn-icon" onclick="closeProjectDetails()">&#10005;</button>
+    </div>
+    <label for="projDetName">Name</label>
+    <input type="text" id="projDetName" maxlength="191">
+    <label for="projDetFolder">Folder</label>
+    <input type="text" id="projDetFolder" list="projDetFolderList" maxlength="120" placeholder="e.g. a client, site or job number (empty = Unfiled)">
+    <datalist id="projDetFolderList"></datalist>
+    <label for="projDetStatus">Status</label>
+    <select id="projDetStatus">
+      <option value="draft">Draft</option>
+      <option value="review">In review</option>
+      <option value="issued">Issued</option>
+      <option value="archived">Archived (hidden from the list unless you ask)</option>
+    </select>
+    <label for="projDetTags">Tags</label>
+    <input type="text" id="projDetTags" placeholder="e.g. control panel, 400V, rev B (comma separated)">
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeProjectDetails()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="saveProjectDetails()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="cableManagerModal" class="modal-overlay">
+  <div class="modal-card" style="width: 1020px; max-width: 94vw;">
+    <div class="modal-header">
+      <h3>Cables</h3>
+      <button type="button" class="btn-icon" onclick="closeCableManagerModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Edit any field directly. Deleting a cable also removes its markers from every sheet. Each core shows where it goes, device and pin at both ends, worked out from the wires so it follows the drawing.</p>
+    <div style="max-height: 55vh; overflow:auto; border:1px solid var(--border-light); border-radius:var(--radius-md);">
+      <table class="bom-table">
+        <thead>
+          <tr>
+            <th>Designator</th><th>Type</th><th>Cores</th><th>CSA (mm&sup2;)</th><th>Core colours &amp; assignments</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="cableManagerTableBody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="exportCableSchedule()" title="Save a CSV with one line per wired core: cable, core, colour, wire ID, and the device and pin at each end">Export schedule (CSV)</button>
+      <button type="button" class="btn btn-ghost" style="margin-right:auto;" onclick="openCableLibraryModal()" title="Reusable cables: type, cores, CSA and core colours">Cable Library&hellip;</button>
+      <button type="button" class="btn btn-ghost" onclick="closeCableManagerModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="panelImportModal" class="modal-overlay" style="z-index: 1040;">
+  <div class="modal-card" style="width: 460px; max-width: 94vw;">
+    <div class="modal-header">
+      <h3 id="piTitle">Import footprint</h3>
+      <button type="button" class="btn-icon" onclick="cancelPanelImport()">&#10005;</button>
+    </div>
+    <div style="display:flex; gap:14px; align-items:flex-start;">
+      <div id="piPreview" style="width:170px; height:170px; flex:none; display:flex; align-items:center; justify-content:center; background:var(--bg-field); border-radius:6px; color:var(--text);"></div>
+      <p id="piInfo" class="modal-hint" style="margin:0;"></p>
+    </div>
+    <label for="piName">Name</label>
+    <input type="text" id="piName" maxlength="60" autocomplete="off">
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="piKind">This is a</label><select id="piKind" onchange="onPanelImportRail()"><option value="part">Component</option><option value="plate">Backplate / mounting plate</option></select></div>
+      <div id="piUnitsRow" style="flex:1;"><label for="piUnits">Drawing units</label><select id="piUnits" onchange="onPanelImportUnits()"><option value="">As the file says</option><option value="1">Millimetres</option><option value="10">Centimetres</option><option value="25.4">Inches</option><option value="1000">Metres</option></select></div>
+    </div>
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="piMake">Make</label><input type="text" id="piMake" autocomplete="off" placeholder="e.g. ABB"></div>
+      <div style="flex:1;"><label for="piModel">Part number</label><input type="text" id="piModel" autocomplete="off" placeholder="matches the schematic part"></div>
+    </div>
+    <label for="piDesc">Description</label>
+    <input type="text" id="piDesc" autocomplete="off">
+    <div id="piRailRow" style="margin-top:8px;"><label for="piRailAxis">DIN rail mount</label><div style="display:flex; gap:6px; align-items:center;"><select id="piRailAxis" onchange="onPanelImportRail()" style="flex:1;"><option value="">Does not clip onto a rail</option><option value="h">Rail runs left–right</option><option value="v">Rail runs up–down</option></select><button type="button" id="piRailCentre" class="btn btn-ghost" onclick="centrePanelImportRail()">Centre</button></div><p class="modal-hint" style="margin:4px 0 0;">Click the picture to place the rail&#39;s centreline (orange dashed line). Parts with a marker click onto rails on the panel sheet.</p></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="cancelPanelImport()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="confirmPanelImport()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="cableLibraryModal" class="modal-overlay" style="z-index: 1030;">
+  <div class="modal-card" style="width: 520px; max-width: 94vw; max-height: 92vh; overflow:auto;">
+    <div class="modal-header">
+      <h3>Cable Library</h3>
+      <button type="button" class="btn-icon" onclick="closeCableLibraryModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Define a cable once &mdash; type, cores, CSA and the colour of each core &mdash; then pick it whenever you bundle wires into a cable. Save it to a file to use in other projects.</p>
+
+    <label for="clList">Cables in this project's library</label>
+    <select id="clList" size="5" onchange="onCableLibraryListPick()" style="height:auto;"></select>
+
+    <label for="clName">Name</label>
+    <input type="text" id="clName" maxlength="40" placeholder="e.g. 4C 1.5 SWA" autocomplete="off">
+
+    <div class="terminal-two-col">
+      <div style="flex:1;"><label for="clType">Cable type</label><input type="text" id="clType" placeholder="e.g. SWA, YY, LSZH" autocomplete="off"></div>
+      <div style="flex:1;"><label for="clCores">Cores</label><input type="number" id="clCores" min="1" max="120" value="3" onchange="onCableLibraryCoresChange()"></div>
+      <div style="flex:1;"><label for="clCsa">CSA (mm&sup2;)</label><input type="text" id="clCsa" placeholder="e.g. 1.5" autocomplete="off"></div>
+    </div>
+
+    <label for="clDescription">Description</label>
+    <input type="text" id="clDescription" placeholder="e.g. 4-core armoured cable, 1.5 mm&sup2;" autocomplete="off">
+
+    <label>Core colours <button type="button" class="btn btn-ghost" style="padding:1px 8px; margin-left:8px;" onclick="fillStandardCableLibraryColours()">Standard colours</button></label>
+    <div id="clColours" style="max-height:170px; overflow:auto; border:1px solid var(--border-light); border-radius:var(--radius-md); padding:4px 8px;"></div>
+
+    <p id="clMessage" class="modal-hint" style="display:none;"></p>
+
+    <div class="terminal-two-col" style="gap:6px; flex-wrap:wrap; margin:8px 0 6px;">
+      <button type="button" id="clExportBtn" class="btn btn-ghost" title="Save every cable in this library to a file" onclick="exportCableLibrary()">Save to file</button>
+      <button type="button" id="clImportBtn" class="btn btn-ghost" title="Add the cables from a saved file. Cables you already have are never changed" onclick="chooseCableLibraryFile()">Load from file</button>
+      <button type="button" id="clStandardBtn" class="btn btn-ghost" title="Add the standard cables that are missing" onclick="addStandardCablesFromForm()">Add standard set</button>
+      <input type="file" id="clImportInput" accept=".json,application/json" style="display:none;" onchange="importCableLibraryFile(event)">
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" id="clDeleteBtn" class="btn btn-ghost" style="margin-right:auto; color:#f87171;" onclick="deleteCableLibraryEntry()">Delete</button>
+      <button type="button" id="clNewBtn" class="btn btn-ghost" onclick="newCableLibraryForm()">New</button>
+      <button type="button" id="clSaveBtn" class="btn btn-primary" onclick="saveCableLibraryForm()">Save</button>
+      <button type="button" class="btn btn-ghost" onclick="closeCableLibraryModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="cableAssignModal" class="modal-overlay">
+  <div class="modal-card" style="width: 440px;">
+    <div class="modal-header">
+      <h3>Assign to Cable</h3>
+      <button type="button" class="btn-icon" onclick="closeCableAssignmentModal()">&#10005;</button>
+    </div>
+
+    <p class="modal-hint">Wires crossed: <strong id="cableCrossedWiresList" style="color: var(--text);"></strong></p>
+
+    <label for="cableExistingSelect">Cable</label>
+    <select id="cableExistingSelect" onchange="toggleCableNewFields()">
+      <option value="">— Create new cable —</option>
+    </select>
+
+    <div id="cableNewFields">
+      <label for="cableLibrarySelect">From cable library</label>
+      <select id="cableLibrarySelect" onchange="onCableLibraryPick()"><option value="">— None (type it in) —</option></select>
+
+      <label for="cableTypeInput">Cable Type</label>
+      <input type="text" id="cableTypeInput" placeholder="e.g. SWA, YY, LSZH">
+
+      <div class="modal-row">
+        <div>
+          <label for="cableCoreCountInput">Core Count</label>
+          <input type="number" id="cableCoreCountInput" min="1" value="2">
+        </div>
+        <div>
+          <label for="cableCsaInput">CSA (mm&sup2;)</label>
+          <input type="text" id="cableCsaInput" placeholder="e.g. 1.5">
+        </div>
+      </div>
+      <label style="display:flex; align-items:center; gap:6px; margin-top:8px; font-weight:400;">
+        <input type="checkbox" id="cableStdColoursCheck" style="width:auto;"> Colour the cores in the standard order (BRN, BLK, GRY, BLU, GRN/YEL &hellip;)
+      </label>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeCableAssignmentModal()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="confirmCableAssignment()">Assign</button>
+    </div>
+  </div>
+</div>
+
+<div id="connectorModal" class="modal-overlay">
+  <div class="modal-card" style="width: 420px;">
+    <div class="modal-header">
+      <h3 id="connTitle">Connector</h3>
+      <button type="button" class="btn-icon" onclick="closeConnectorModal()">&#10005;</button>
+    </div>
+
+    <div style="display:flex; gap:14px; align-items:center;">
+      <div id="connPreview"></div>
+      <div style="flex:1;">
+        <p class="modal-hint" id="connMaleText" style="margin:0 0 6px;"></p>
+        <button type="button" class="btn btn-ghost" onclick="swapConnectorSides()">Swap plug / socket</button>
+      </div>
+    </div>
+
+    <label for="connDesignator">Designator</label>
+    <input type="text" id="connDesignator" maxlength="20" placeholder="e.g. CN1, X5">
+
+    <label for="connDesc">Description</label>
+    <input type="text" id="connDesc" maxlength="80" placeholder="e.g. 9-way D-type, panel to field">
+
+    <label for="connPartNo">Part No.</label>
+    <input type="text" id="connPartNo" maxlength="60">
+
+    <div style="display:flex; gap:14px; margin:6px 0 2px; font-size:13px;">
+      <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="connShowDesc" checked style="width:auto;"> Show description on sheet</label>
+      <label style="display:flex; align-items:center; gap:5px; font-weight:400;"><input type="checkbox" id="connShowPart" checked style="width:auto;"> Show part no.</label>
+    </div>
+
+    <label for="connPinPreset">Name the pins</label>
+    <select id="connPinPreset" onchange="onConnectorPinPreset(this)">
+      <option value="">Choose a set of pin names&hellip;</option>
+      <option value="numbers">1, 2, 3 &hellip;</option>
+      <option value="l123">L1, L2, L3</option>
+      <option value="l123n">L1, L2, L3, N</option>
+      <option value="l123npe">L1, L2, L3, N, PE</option>
+      <option value="l123pe">L1, L2, L3, PE</option>
+      <option value="lnpe">L, N, PE</option>
+      <option value="uvw">U, V, W</option>
+      <option value="uvwpe">U, V, W, PE</option>
+      <option value="pn">+, &minus;</option>
+      <option value="abc">A, B, C &hellip;</option>
+      <option value="custom">Type my own list&hellip;</option>
+    </select>
+    <input type="text" id="connPinCustom" placeholder="e.g. L1, L2, L3, N, PE" style="display:none; margin-top:4px;" oninput="applyConnectorPinNames('custom', this.value)">
+
+    <label>Pins</label>
+    <p class="modal-hint" style="margin:0 0 4px;">Pins start in order. Edit a pin number, or use the arrows to move a wire to the pin above or below.</p>
+    <table style="width:100%; font-size:13px;"><thead><tr style="text-align:left;"><th>Pin</th><th>Wire</th><th></th></tr></thead><tbody id="connRows"></tbody></table>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="connDeleteBtn" onclick="deleteConnectorFromModal()" style="margin-right:auto; display:none;">Delete</button>
+      <button type="button" class="btn btn-ghost" onclick="closeConnectorModal()">Cancel</button>
+      <button type="button" class="btn btn-primary" onclick="confirmConnectorModal()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="wireRefModal" class="modal-overlay">
+  <div class="modal-card" style="width: 560px; max-width: 92vw;">
+    <div class="modal-header">
+      <h3>Wire Cross-References</h3>
+      <button type="button" class="btn-icon" onclick="closeWireReferenceModal()">&#10005;</button>
+    </div>
+    <p class="modal-hint">Every manually-named wire with two or more open ends across the portfolio — exactly what the "→ Sh.X/YZ" labels on your sheets are showing. Use this to spot a missing match (check the name is identical on both ends) or an unexpected one (check for a typo shared by two different nets).</p>
+    <div style="max-height: 55vh; overflow:auto; border:1px solid var(--border-light); border-radius:var(--radius-md);">
+      <table class="bom-table">
+        <thead>
+          <tr>
+            <th>Wire ID</th>
+            <th>Open ends</th>
+          </tr>
+        </thead>
+        <tbody id="wireRefTableBody"></tbody>
+      </table>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeWireReferenceModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Save fallback notice: explains why the folder picker didn't appear, shown once -->
+<div id="saveFallbackNotice" style="display:none; position:fixed; bottom:16px; right:16px; max-width:320px; background:var(--bg-panel); color:#e2e8f0; border:1px solid var(--border-light); border-radius:var(--radius-lg); padding:12px 14px; font-size:12px; line-height:1.5; box-shadow:var(--shadow-lg); z-index:9999;">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+    <span>💾 Saved to your default downloads folder. Choosing a save location needs a secure connection (HTTPS, or <code>localhost</code>) — this page is loaded over a plain connection, so that option isn't available here.</span>
+    <button type="button" class="btn-icon" onclick="dismissSaveFallbackNotice()" style="font-size:14px; flex-shrink:0;">&#10005;</button>
+  </div>
+</div>
+
+<script>
+  window.csrfToken = "desktop";
+  window.currentUser = { plan: "pro" };
+  window.autoTour = false;   // start the welcome tour by itself (see js/38_walkthrough.js)
+
+  // Ribbon tab switching is pure UI state (which group of buttons is visible) —
+  // it never touches app data, so it doesn't need to go through the ES module system.
+  function setRibbonTab(tab) {
+    ['home', 'project', 'insert', 'draw', 'reports', 'view'].forEach(t => {
+      const content = document.getElementById(`ribbonContent-${t}`);
+      const tabBtn = document.getElementById(`ribbonTab-${t}`);
+      if (content) content.style.display = (t === tab) ? 'flex' : 'none';
+      if (tabBtn) tabBtn.classList.toggle('active', t === tab);
+    });
+  }
+  window.setRibbonTab = setRibbonTab;
+</script>
+
+<script type="importmap">{"imports":{"./js/0_default_cables.js":"./js/0_default_cables.js","./js/0_default_symbol_library.js":"./js/0_default_symbol_library.js","./js/0_default_terminal_models.js":"./js/0_default_terminal_models.js","./js/10_terminal_links.js":"./js/10_terminal_links.js","./js/11_terminal_blocks.js":"./js/11_terminal_blocks.js","./js/12_terminal_modal.js":"./js/12_terminal_modal.js","./js/13_terminal_models.js":"./js/13_terminal_models.js","./js/14_portfolio_view.js":"./js/14_portfolio_view.js","./js/15_terminal_block_manager.js":"./js/15_terminal_block_manager.js","./js/16_plc_modules.js":"./js/16_plc_modules.js","./js/17_plc_module_creator.js":"./js/17_plc_module_creator.js","./js/18_cable_library.js":"./js/18_cable_library.js","./js/19_cable_library_ui.js":"./js/19_cable_library_ui.js","./js/1_config_state.js":"./js/1_config_state.js","./js/20_dxf_import.js":"./js/20_dxf_import.js","./js/21_panel_data.js":"./js/21_panel_data.js","./js/22_panel_layout.js":"./js/22_panel_layout.js","./js/23_revision_data.js":"./js/23_revision_data.js","./js/24_revisions_ui.js":"./js/24_revisions_ui.js","./js/25_title_block.js":"./js/25_title_block.js","./js/26_title_block_designer.js":"./js/26_title_block_designer.js","./js/27_title_block_library.js":"./js/27_title_block_library.js","./js/28_wire_markers.js":"./js/28_wire_markers.js","./js/29_multi_wire.js":"./js/29_multi_wire.js","./js/2_main_stage.js":"./js/2_main_stage.js","./js/30_connectors.js":"./js/30_connectors.js","./js/31_find.js":"./js/31_find.js","./js/32_sheet_tools.js":"./js/32_sheet_tools.js","./js/33_cable_routes.js":"./js/33_cable_routes.js","./js/34_cable_diagram.js":"./js/34_cable_diagram.js","./js/35_drive_modules.js":"./js/35_drive_modules.js","./js/36_drive_creator.js":"./js/36_drive_creator.js","./js/37_terminal_groups.js":"./js/37_terminal_groups.js","./js/38_walkthrough.js":"./js/38_walkthrough.js","./js/39_contact_sets.js":"./js/39_contact_sets.js","./js/3_schematic_engine.js":"./js/3_schematic_engine.js","./js/40_builtin_library.js":"./js/40_builtin_library.js","./js/40_component_menu.js":"./js/40_component_menu.js","./js/41_plc_io_schedule.js":"./js/41_plc_io_schedule.js","./js/42_parts_library.js":"./js/42_parts_library.js","./js/43_terminal_sides.js":"./js/43_terminal_sides.js","./js/4_symbol_studio.js":"./js/4_symbol_studio.js","./js/5_portfolio_sheets.js":"./js/5_portfolio_sheets.js","./js/6_bom.js":"./js/6_bom.js","./js/7_cables.js":"./js/7_cables.js","./js/8_projects.js":"./js/8_projects.js","./js/9_symbol_thumbnails.js":"./js/9_symbol_thumbnails.js","./js/main.js":"./js/main.js"}}</script>
+<script type="module" src="js/main.js?v=desktop"></script>
+
+
+</body>
+</html>

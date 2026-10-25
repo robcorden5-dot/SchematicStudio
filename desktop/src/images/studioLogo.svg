@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none">
+  <defs>
+    <linearGradient id="topGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00b7c3"></stop>
+      <stop offset="100%" stop-color="#479ef5"></stop>
+    </linearGradient>
+    <linearGradient id="botGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#479ef5"></stop>
+      <stop offset="100%" stop-color="#0078d4"></stop>
+    </linearGradient>
+  </defs>
+  <g transform="translate(5, 0)">
+    <path d="M 34 9 L 16 9 C 10 9 6 13 6 19 L 6 20 C 6 26 10 30 16 30 L 25 30" stroke="url(#topGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M 19 30 L 28 30 C 34 30 38 34 38 40 L 38 41 C 38 47 34 51 28 51 L 10 51" stroke="url(#botGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+    <circle cx="34" cy="9" r="4.5" fill="#202020" stroke="#00b7c3" stroke-width="3"></circle>
+    <circle cx="10" cy="51" r="4.5" fill="#202020" stroke="#0078d4" stroke-width="3"></circle>
+    <circle cx="22" cy="30" r="4.5" fill="#ffffff"></circle>
+  </g>
+</svg>

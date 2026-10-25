@@ -1,0 +1,3137 @@
+{
+ "type": "SymbolLibrary",
+ "version": "1.1",
+ "libraryName": "Hydraulic",
+ "exportedAt": "2026-10-19T16:31:59.000Z",
+ "symbols": {
+  "custom_4_2_valve_solenoid_spring": {
+   "name": "4/2 Valve Solenoid/Spring",
+   "prefix": "V",
+   "value": "4/2",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -40 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -43.49 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -42.11 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -42.11 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -43.49 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 9 L -20 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -9 L -21.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -9 L -18.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -9 L 20 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 21.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 18.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -100.0 -5 L -90.0 -5 L -90.0 5 L -100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -100.0 5 L -90.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 0 L 31.43 -3 L 32.86 3 L 34.29 -3 L 35.71 3 L 37.14 -3 L 38.57 3 L 40.0 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a"
+   ]
+  },
+  "custom_4_2_valve_double_solenoid": {
+   "name": "4/2 Valve Double Solenoid",
+   "prefix": "V",
+   "value": "4/2 Bistable",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -40 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -43.49 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -42.11 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -42.11 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -43.49 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 9 L -20 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -9 L -21.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -9 L -18.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -9 L 20 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 21.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 18.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -100.0 -5 L -90.0 -5 L -90.0 5 L -100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -100.0 5 L -90.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 -5 L 40.0 -5 L 40.0 5 L 30.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 5 L 40.0 -5",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a",
+    "b"
+   ]
+  },
+  "custom_4_2_valve_lever_spring": {
+   "name": "4/2 Valve Lever/Spring",
+   "prefix": "V",
+   "value": "4/2",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -40 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -43.49 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -42.11 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -42.11 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -43.49 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 9 L -20 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -9 L -21.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -9 L -18.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -9 L 20 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 21.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 18.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90.0 0 L -98.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -98.0 0 L -103.0 -6",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 0 L 31.43 -3 L 32.86 3 L 34.29 -3 L 35.71 3 L 37.14 -3 L 38.57 3 L 40.0 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_4_3_valve_closed_centre_double_solenoid": {
+   "name": "4/3 Valve Closed Centre Double Solenoid",
+   "prefix": "V",
+   "value": "4/3 Closed",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 -10 L 90.0 -10 L 90.0 10 L 30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -81.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -78.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -38.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -41.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 7 L -17 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 -7 L -17 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 -7 L 23 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 7 L 23 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 9 L 80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 76.51 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 77.89 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 -9 L 80 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 77.89 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 76.51 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90.0 0 L -91.43 -3 L -92.86 3 L -94.29 -3 L -95.71 3 L -97.14 -3 L -98.57 3 L -100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 -5 L -100.0 -5 L -100.0 5 L -110.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 5 L -100.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 90.0 0 L 91.43 -3 L 92.86 3 L 94.29 -3 L 95.71 3 L 97.14 -3 L 98.57 3 L 100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 -5 L 110.0 -5 L 110.0 5 L 100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 5 L 110.0 -5",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a",
+    "b"
+   ]
+  },
+  "custom_4_3_valve_open_centre_double_solenoid": {
+   "name": "4/3 Valve Open Centre Double Solenoid",
+   "prefix": "V",
+   "value": "4/3 Open",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 -10 L 90.0 -10 L 90.0 10 L 30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -81.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -78.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -38.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -41.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 9 L 80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 76.51 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 77.89 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 -9 L 80 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 77.89 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 76.51 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90.0 0 L -91.43 -3 L -92.86 3 L -94.29 -3 L -95.71 3 L -97.14 -3 L -98.57 3 L -100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 -5 L -100.0 -5 L -100.0 5 L -110.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 5 L -100.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 90.0 0 L 91.43 -3 L 92.86 3 L 94.29 -3 L 95.71 3 L 97.14 -3 L 98.57 3 L 100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 -5 L 110.0 -5 L 110.0 5 L 100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 5 L 110.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 10",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 0 L 20 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a",
+    "b"
+   ]
+  },
+  "custom_4_3_valve_tandem_centre_double_solenoid": {
+   "name": "4/3 Valve Tandem Centre Double Solenoid",
+   "prefix": "V",
+   "value": "4/3 Tandem",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 -10 L 90.0 -10 L 90.0 10 L 30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -81.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -78.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -38.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -41.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 -7 L -17 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 -7 L 23 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 9 L 80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 76.51 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 77.89 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 -9 L 80 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 77.89 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 76.51 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90.0 0 L -91.43 -3 L -92.86 3 L -94.29 -3 L -95.71 3 L -97.14 -3 L -98.57 3 L -100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 -5 L -100.0 -5 L -100.0 5 L -110.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 5 L -100.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 90.0 0 L 91.43 -3 L 92.86 3 L 94.29 -3 L 95.71 3 L 97.14 -3 L 98.57 3 L 100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 -5 L 110.0 -5 L 110.0 5 L 100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 5 L 110.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 4 L 20 4 L 20 10",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a",
+    "b"
+   ]
+  },
+  "custom_4_3_valve_float_centre_double_solenoid": {
+   "name": "4/3 Valve Float Centre Double Solenoid",
+   "prefix": "V",
+   "value": "4/3 Float",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 -10 L 90.0 -10 L 90.0 10 L 30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -81.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -78.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -38.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -41.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 7 L -17 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 9 L 80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 76.51 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 77.89 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 -9 L 80 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 77.89 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 76.51 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90.0 0 L -91.43 -3 L -92.86 3 L -94.29 -3 L -95.71 3 L -97.14 -3 L -98.57 3 L -100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 -5 L -100.0 -5 L -100.0 5 L -110.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 5 L -100.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 90.0 0 L 91.43 -3 L 92.86 3 L 94.29 -3 L 95.71 3 L 97.14 -3 L 98.57 3 L 100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 -5 L 110.0 -5 L 110.0 5 L 100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 5 L 110.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -3 L 20 -3",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 10",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a",
+    "b"
+   ]
+  },
+  "custom_4_3_proportional_valve_double_solenoid": {
+   "name": "4/3 Proportional Valve Double Solenoid",
+   "prefix": "V",
+   "value": "4/3 Proportional",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 -10 L 90.0 -10 L 90.0 10 L 30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -81.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 -9 L -78.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -40 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -38.32 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -41.68 5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 7 L -17 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 -7 L -17 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 -7 L 23 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 7 L 23 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 9 L 80 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 76.51 -9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 -9 L 77.89 -6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 40 -9 L 80 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 77.89 6.21",
+     "dash": "solid"
+    },
+    {
+     "d": "M 80 9 L 76.51 9.27",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90.0 0 L -91.43 -3 L -92.86 3 L -94.29 -3 L -95.71 3 L -97.14 -3 L -98.57 3 L -100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 -5 L -100.0 -5 L -100.0 5 L -110.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -110.0 5 L -100.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 90.0 0 L 91.43 -3 L 92.86 3 L 94.29 -3 L 95.71 3 L 97.14 -3 L 98.57 3 L 100.0 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 -5 L 110.0 -5 L 110.0 5 L 100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 100.0 5 L 110.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90 -14 L 90 -14",
+     "dash": "solid"
+    },
+    {
+     "d": "M -90 14 L 90 14",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a",
+    "b"
+   ]
+  },
+  "custom_3_2_valve_nc_solenoid_spring": {
+   "name": "3/2 Valve NC Solenoid/Spring",
+   "prefix": "V",
+   "value": "3/2 NC",
+   "pathData": [
+    {
+     "d": "M -90.0 -10 L -30.0 -10 L -30.0 10 L -90.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30.0 -10 L 30.0 -10 L 30.0 10 L -30.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 10 L 20 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -80 9 L -60 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -60 -9 L -63.41 -8.19",
+     "dash": "solid"
+    },
+    {
+     "d": "M -60 -9 L -61.16 -5.7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 10 L -40 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -43 7 L -37 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 10 L -20 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -23 7 L -17 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -9 L 20 9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 18.84 5.7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 9 L 16.59 8.19",
+     "dash": "solid"
+    },
+    {
+     "d": "M -100.0 -5 L -90.0 -5 L -90.0 5 L -100.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -100.0 5 L -90.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30.0 0 L 31.43 -3 L 32.86 3 L 34.29 -3 L 35.71 3 L 37.14 -3 L 38.57 3 L 40.0 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": -20,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 20,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": -17,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 23,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a"
+   ]
+  },
+  "custom_2_2_valve_nc_solenoid_spring": {
+   "name": "2/2 Valve NC Solenoid/Spring",
+   "prefix": "V",
+   "value": "2/2 NC",
+   "pathData": [
+    {
+     "d": "M -60.0 -10 L -20.0 -10 L -20.0 10 L -60.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20.0 -10 L 20.0 -10 L 20.0 10 L -20.0 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 9 L -40 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -41.68 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -40 -9 L -38.32 -5.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -3 7 L 3 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -3 -7 L 3 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -70.0 -5 L -60.0 -5 L -60.0 5 L -70.0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -70.0 5 L -60.0 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20.0 0 L 21.43 -3 L 22.86 3 L 24.29 -3 L 25.71 3 L 27.14 -3 L 28.57 3 L 30.0 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "P",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic",
+   "valveBody": true,
+   "valveSolenoids": [
+    "a"
+   ]
+  },
+  "custom_fixed_pump": {
+   "name": "Fixed Displacement Pump",
+   "prefix": "P",
+   "value": "Pump",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 4 L 5 4 L 0 -5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 10 0 L 26 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "S",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "P",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "S",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_variable_pump": {
+   "name": "Variable Displacement Pump",
+   "prefix": "P",
+   "value": "Variable pump",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 4 L 5 4 L 0 -5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -9 9 L 9 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 5.64 -8.01",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 8.01 -5.64",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 10 0 L 26 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "S",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "P",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "S",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_bidirectional_pump": {
+   "name": "Bidirectional Fixed Pump",
+   "prefix": "P",
+   "value": "Reversible pump",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 -1 L 5 -1 L 0 -8 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 1 L 5 1 L 0 8 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 10 0 L 26 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_fixed_motor": {
+   "name": "Fixed Displacement Motor",
+   "prefix": "M",
+   "value": "Hydraulic motor",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 -4 L 5 -4 L 0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 10 0 L 26 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "P",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_variable_motor": {
+   "name": "Variable Displacement Motor",
+   "prefix": "M",
+   "value": "Variable motor",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 -4 L 5 -4 L 0 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -9 9 L 9 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 5.64 -8.01",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 8.01 -5.64",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 10 0 L 26 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "P",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "T",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_bidirectional_motor": {
+   "name": "Bidirectional Hydraulic Motor",
+   "prefix": "M",
+   "value": "Reversible motor",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 -8 L 5 -8 L 0 -1 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -5 8 L 5 8 L 0 1 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 10 0 L 26 0",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 3,
+     "relY": 20,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_double_acting_cylinder": {
+   "name": "Double Acting Cylinder",
+   "prefix": "A",
+   "value": "Double acting",
+   "pathData": [
+    {
+     "d": "M -30 -10 L 30 -10 L 30 10 L -30 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 0 L 50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_single_acting_cylinder_spring_return": {
+   "name": "Single Acting Cylinder Spring Return",
+   "prefix": "A",
+   "value": "Single acting",
+   "pathData": [
+    {
+     "d": "M -30 -10 L 30 -10 L 30 10 L -30 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -10 -10 L -10 10",
+     "dash": "solid"
+    },
+    {
+     "d": "M -10 0 L -5.56 -3 L -1.11 3 L 3.33 -3 L 7.78 3 L 12.22 -3 L 16.67 3 L 21.11 -3 L 25.56 3 L 30 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30 0 L 50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_double_acting_cylinder_cushioned": {
+   "name": "Double Acting Cylinder Cushioned",
+   "prefix": "A",
+   "value": "Cushioned",
+   "pathData": [
+    {
+     "d": "M -30 -10 L 30 -10 L 30 10 L -30 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 0 L 50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30 -6 L -24 -6 L -24 6 L -30 6 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 24 -6 L 30 -6 L 30 6 L 24 6 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_double_rod_cylinder": {
+   "name": "Double Rod Cylinder",
+   "prefix": "A",
+   "value": "Double rod",
+   "pathData": [
+    {
+     "d": "M -30 -10 L 30 -10 L 30 10 L -30 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30 0 L 50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -30 0 L -50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_single_acting_ram": {
+   "name": "Single Acting Ram",
+   "prefix": "A",
+   "value": "Ram",
+   "pathData": [
+    {
+     "d": "M -30 -10 L 30 -10 L 30 10 L -30 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -10 -4 L 30 -4 L 30 4 L -10 4 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30 0 L 50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_semi_rotary_actuator": {
+   "name": "Semi-Rotary Actuator",
+   "prefix": "A",
+   "value": "Rotary",
+   "pathData": [
+    {
+     "d": "M -30 -10 L 30 -10 L 30 10 L -30 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 30 0 L 50 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -8 4 A 8 8 0 0 1 8 4",
+     "dash": "solid"
+    },
+    {
+     "d": "M -8 4 L -8 -1",
+     "dash": "solid"
+    },
+    {
+     "d": "M 8 4 L 8 -1",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -10 L -20 -20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -10 L 20 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -17,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 23,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_tank": {
+   "name": "Tank (Reservoir)",
+   "prefix": "T",
+   "value": "Tank",
+   "pathData": [
+    {
+     "d": "M -30 -10 L -30 10 L 30 10 L 30 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 -20 L -20 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 -20 L 20 5",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "T",
+     "relX": -20,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "S",
+     "relX": 20,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_filter": {
+   "name": "Filter",
+   "prefix": "F",
+   "value": "Filter",
+   "pathData": [
+    {
+     "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -6 0 L 6 0",
+     "dash": "dashed"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_suction_strainer": {
+   "name": "Suction Strainer",
+   "prefix": "F",
+   "value": "Strainer",
+   "pathData": [
+    {
+     "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -6 0 L 6 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_cooler": {
+   "name": "Cooler",
+   "prefix": "Z",
+   "value": "Cooler",
+   "pathData": [
+    {
+     "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -7 -3 L -17 -13",
+     "dash": "solid"
+    },
+    {
+     "d": "M -17 -13 L -16.01 -9.64",
+     "dash": "solid"
+    },
+    {
+     "d": "M -17 -13 L -13.64 -12.01",
+     "dash": "solid"
+    },
+    {
+     "d": "M 7 -3 L 17 -13",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 -13 L 13.64 -12.01",
+     "dash": "solid"
+    },
+    {
+     "d": "M 17 -13 L 16.01 -9.64",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_accumulator": {
+   "name": "Accumulator",
+   "prefix": "AC",
+   "value": "Accumulator",
+   "pathData": [
+    {
+     "d": "M -10 -5 A 10 10 0 0 1 10 -5 L 10 5 A 10 10 0 0 1 -10 5 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -10 0 L 10 0",
+     "dash": "dashed"
+    },
+    {
+     "d": "M -4 -3 L 4 -3 L 0 -9 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 15 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_pressure_gauge": {
+   "name": "Pressure Gauge",
+   "prefix": "PG",
+   "value": "Gauge",
+   "pathData": [
+    {
+     "d": "M -10 0 A 10 10 0 1 0 10 0 A 10 10 0 1 0 -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -3 5 L 4 -5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_pressure_relief_valve": {
+   "name": "Pressure Relief Valve",
+   "prefix": "V",
+   "value": "Relief valve",
+   "pathData": [
+    {
+     "d": "M -10 -10 L 10 -10 L 10 10 L -10 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -4 7 L -4 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -4 -7 L -5.68 -3.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -4 -7 L -2.32 -3.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -26 0 L -23.71 -3 L -21.43 3 L -19.14 -3 L -16.86 3 L -14.57 -3 L -12.29 3 L -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 14 L 18 14 L 18 0 L 10 0",
+     "dash": "dashed"
+    }
+   ],
+   "pins": [
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "T",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_pressure_reducing_valve": {
+   "name": "Pressure Reducing Valve",
+   "prefix": "V",
+   "value": "Reducing valve",
+   "pathData": [
+    {
+     "d": "M -10 -10 L 10 -10 L 10 10 L -10 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 7 L 0 -7",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -7 L -1.68 -3.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -7 L 1.68 -3.93",
+     "dash": "solid"
+    },
+    {
+     "d": "M -26 0 L -23.71 -3 L -21.43 3 L -19.14 -3 L -16.86 3 L -14.57 -3 L -12.29 3 L -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -10",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 10 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -14 L 18 -14 L 18 0 L 10 0",
+     "dash": "dashed"
+    }
+   ],
+   "pins": [
+    {
+     "id": "P",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_check_valve": {
+   "name": "Check Valve",
+   "prefix": "V",
+   "value": "Check valve",
+   "pathData": [
+    {
+     "d": "M -4 0 A 4 4 0 1 0 4 0 A 4 4 0 1 0 -4 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -6 8 L 0 4 L 6 8",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -4",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 8 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_pilot_operated_check_valve": {
+   "name": "Pilot Operated Check Valve",
+   "prefix": "V",
+   "value": "Pilot check",
+   "pathData": [
+    {
+     "d": "M -4 0 A 4 4 0 1 0 4 0 A 4 4 0 1 0 -4 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -6 8 L 0 4 L 6 8",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -4",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 8 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 0 L -8 0",
+     "dash": "dashed"
+    },
+    {
+     "d": "M -8 -4 L -8 4",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "X",
+     "relX": -20,
+     "relY": 0,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "X",
+     "relX": -19,
+     "relY": -8,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_variable_restrictor": {
+   "name": "Variable Restrictor (Throttle)",
+   "prefix": "V",
+   "value": "Throttle",
+   "pathData": [
+    {
+     "d": "M -6 -4 L 6 -4",
+     "dash": "solid"
+    },
+    {
+     "d": "M -6 4 L 6 4",
+     "dash": "solid"
+    },
+    {
+     "d": "M -9 9 L 9 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 5.64 -8.01",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 8.01 -5.64",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -4",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 4 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_fixed_orifice": {
+   "name": "Fixed Orifice",
+   "prefix": "V",
+   "value": "Orifice",
+   "pathData": [
+    {
+     "d": "M -3 -6 A 9 9 0 0 1 -3 6",
+     "dash": "solid"
+    },
+    {
+     "d": "M 3 -6 A 9 9 0 0 0 3 6",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -8",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 8 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_one_way_flow_control_valve": {
+   "name": "One-Way Flow Control Valve",
+   "prefix": "V",
+   "value": "Flow control",
+   "pathData": [
+    {
+     "d": "M -6 -4 L 6 -4",
+     "dash": "solid"
+    },
+    {
+     "d": "M -6 4 L 6 4",
+     "dash": "solid"
+    },
+    {
+     "d": "M -9 9 L 9 -9",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 5.64 -8.01",
+     "dash": "solid"
+    },
+    {
+     "d": "M 9 -9 L 8.01 -5.64",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -4",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 4 L 0 20",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -14 L -14 -14 L -14 -3",
+     "dash": "solid"
+    },
+    {
+     "d": "M -17 0 A 3 3 0 1 0 -11 0 A 3 3 0 1 0 -17 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M -18 7 L -14 3 L -10 7",
+     "dash": "solid"
+    },
+    {
+     "d": "M -14 7 L -14 14 L 0 14",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_shut_off_valve": {
+   "name": "Shut-off Valve",
+   "prefix": "V",
+   "value": "Shut-off",
+   "pathData": [
+    {
+     "d": "M -6 -6 L 6 -6 L -6 6 L 6 6 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -20 L 0 -6",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 6 L 0 20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [],
+   "library": "Hydraulic"
+  },
+  "custom_shuttle_valve": {
+   "name": "Shuttle Valve (OR)",
+   "prefix": "V",
+   "value": "Shuttle",
+   "pathData": [
+    {
+     "d": "M -10 -10 L 10 -10 L 10 10 L -10 10 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -3 2 A 3 3 0 1 0 3 2 A 3 3 0 1 0 -3 2",
+     "dash": "solid"
+    },
+    {
+     "d": "M -20 0 L -10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 20 0 L 10 0",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 -10 L 0 -20",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A",
+     "relX": -20,
+     "relY": 0,
+     "rotation": 90
+    },
+    {
+     "id": "B",
+     "relX": 20,
+     "relY": 0,
+     "rotation": 90
+    },
+    {
+     "id": "X",
+     "relX": 0,
+     "relY": -20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A",
+     "relX": -19,
+     "relY": -8,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "B",
+     "relX": 13,
+     "relY": -8,
+     "fontSize": 12,
+     "rotation": 0
+    },
+    {
+     "text": "X",
+     "relX": 3,
+     "relY": -25,
+     "fontSize": 12,
+     "rotation": 0
+    }
+   ],
+   "library": "Hydraulic"
+  },
+  "custom_hydraulic_valve_solenoid_coil": {
+   "name": "Hydraulic Valve Solenoid Coil",
+   "nameNote": "(child)",
+   "prefix": "Y",
+   "value": " ",
+   "description": "Valve solenoid coil",
+   "pathData": [
+    {
+     "d": "M 0 0 L 0 5",
+     "dash": "solid"
+    },
+    {
+     "d": "M 0 20 L 0 15",
+     "dash": "solid"
+    },
+    {
+     "d": "M -10 5 L 10 5 L 10 15 L -10 15 Z",
+     "dash": "solid"
+    },
+    {
+     "d": "M -10 15 L 10 5",
+     "dash": "solid"
+    }
+   ],
+   "pins": [
+    {
+     "id": "A1",
+     "relX": 0,
+     "relY": 0,
+     "rotation": 90
+    },
+    {
+     "id": "A2",
+     "relX": 0,
+     "relY": 20,
+     "rotation": 90
+    }
+   ],
+   "texts": [
+    {
+     "text": "A1",
+     "relX": 5,
+     "relY": -8,
+     "fontSize": 11,
+     "rotation": 0
+    },
+    {
+     "text": "A2",
+     "relX": 5,
+     "relY": 21.5,
+     "fontSize": 11,
+     "rotation": 0
+    }
+   ],
+   "childContact": "sol",
+   "library": "Hydraulic"
+  }
+ }
+}

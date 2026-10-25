@@ -1,0 +1,5453 @@
+{
+  "type": "SymbolLibrary",
+  "version": "1.1",
+  "libraryName": "Sensors",
+  "exportedAt": "2026-10-18T06:50:35.000Z",
+  "symbols": {
+    "custom_inductive_2w_no": {
+      "name": "Inductive Sensor 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_2w_nc": {
+      "name": "Inductive Sensor 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_3w_pnp_no": {
+      "name": "Inductive Sensor 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_3w_pnp_nc": {
+      "name": "Inductive Sensor 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_3w_npn_no": {
+      "name": "Inductive Sensor 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_3w_npn_nc": {
+      "name": "Inductive Sensor 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_4w_pnp": {
+      "name": "Inductive Sensor 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_inductive_4w_npn": {
+      "name": "Inductive Sensor 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2 A 2 2 0 0 1 -2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2 2 A 2 2 0 0 1 2 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2 2 A 2 2 0 0 1 6 2",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_2w_no": {
+      "name": "Capacitive Sensor 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_2w_nc": {
+      "name": "Capacitive Sensor 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_3w_pnp_no": {
+      "name": "Capacitive Sensor 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_3w_pnp_nc": {
+      "name": "Capacitive Sensor 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_3w_npn_no": {
+      "name": "Capacitive Sensor 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_3w_npn_nc": {
+      "name": "Capacitive Sensor 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_4w_pnp": {
+      "name": "Capacitive Sensor 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_capacitive_4w_npn": {
+      "name": "Capacitive Sensor 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -2.5 -5 L -2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 -5 L 2.5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 0 L -2.5 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M 2.5 0 L 6 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_2w_no": {
+      "name": "Photoelectric Sensor (Diffuse) 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_2w_nc": {
+      "name": "Photoelectric Sensor (Diffuse) 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_3w_pnp_no": {
+      "name": "Photoelectric Sensor (Diffuse) 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_3w_pnp_nc": {
+      "name": "Photoelectric Sensor (Diffuse) 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_3w_npn_no": {
+      "name": "Photoelectric Sensor (Diffuse) 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_3w_npn_nc": {
+      "name": "Photoelectric Sensor (Diffuse) 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_4w_pnp": {
+      "name": "Photoelectric Sensor (Diffuse) 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_diffuse_4w_npn": {
+      "name": "Photoelectric Sensor (Diffuse) 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -2.5 L 2.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 3.5 L -4 0.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -2.37 2.39",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 0.5 L -1.52 0.15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_2w_no": {
+      "name": "Photoelectric Sensor (Retro-reflective) 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_2w_nc": {
+      "name": "Photoelectric Sensor (Retro-reflective) 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_3w_pnp_no": {
+      "name": "Photoelectric Sensor (Retro-reflective) 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_3w_pnp_nc": {
+      "name": "Photoelectric Sensor (Retro-reflective) 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_3w_npn_no": {
+      "name": "Photoelectric Sensor (Retro-reflective) 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_3w_npn_nc": {
+      "name": "Photoelectric Sensor (Retro-reflective) 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_4w_pnp": {
+      "name": "Photoelectric Sensor (Retro-reflective) 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_retro_4w_npn": {
+      "name": "Photoelectric Sensor (Retro-reflective) 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 3 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 -2.5 L 0.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 3 2.5 L -5 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 2.5 L -2.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 5 -5 L 5 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_2w_no": {
+      "name": "Photoelectric Receiver (Through-beam) 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_2w_nc": {
+      "name": "Photoelectric Receiver (Through-beam) 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_3w_pnp_no": {
+      "name": "Photoelectric Receiver (Through-beam) 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_3w_pnp_nc": {
+      "name": "Photoelectric Receiver (Through-beam) 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_3w_npn_no": {
+      "name": "Photoelectric Receiver (Through-beam) 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_3w_npn_nc": {
+      "name": "Photoelectric Receiver (Through-beam) 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_4w_pnp": {
+      "name": "Photoelectric Receiver (Through-beam) 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_receiver_4w_npn": {
+      "name": "Photoelectric Receiver (Through-beam) 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 -2.5 L 4 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 -2.5 L 1.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -6 2.5 L 4 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 4 2.5 L 1.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_2w_no": {
+      "name": "Magnetic Sensor (Reed/Hall) 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_2w_nc": {
+      "name": "Magnetic Sensor (Reed/Hall) 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_3w_pnp_no": {
+      "name": "Magnetic Sensor (Reed/Hall) 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_3w_pnp_nc": {
+      "name": "Magnetic Sensor (Reed/Hall) 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_3w_npn_no": {
+      "name": "Magnetic Sensor (Reed/Hall) 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_3w_npn_nc": {
+      "name": "Magnetic Sensor (Reed/Hall) 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_4w_pnp": {
+      "name": "Magnetic Sensor (Reed/Hall) 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_magnetic_4w_npn": {
+      "name": "Magnetic Sensor (Reed/Hall) 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -5 -2.5 L 5 -2.5 L 5 2.5 L -5 2.5 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -2.5 L 0 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_2w_no": {
+      "name": "Ultrasonic Sensor 2-Wire (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.O",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_2w_nc": {
+      "name": "Ultrasonic Sensor 2-Wire (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "N.C",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_3w_pnp_no": {
+      "name": "Ultrasonic Sensor 3-Wire PNP (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_3w_pnp_nc": {
+      "name": "Ultrasonic Sensor 3-Wire PNP (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_3w_npn_no": {
+      "name": "Ultrasonic Sensor 3-Wire NPN (N.O)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.O",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_3w_npn_nc": {
+      "name": "Ultrasonic Sensor 3-Wire NPN (N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN N.C",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_4w_pnp": {
+      "name": "Ultrasonic Sensor 4-Wire PNP (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "PNP NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_ultrasonic_4w_npn": {
+      "name": "Ultrasonic Sensor 4-Wire NPN (N.O + N.C)",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -30 -15 L 30 -15 L 30 15 L -30 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -7 0 L -3 0",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -3 A 3 3 0 0 1 -3 3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -3 -5 A 5 5 0 0 1 -3 5",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 -20 L -20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M -20 15 L -20 20",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 -20 L 20 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 20 15 L 20 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": -20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": -20,
+          "relY": 20,
+          "rotation": 90
+        },
+        {
+          "id": "WH",
+          "relX": 20,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BK",
+          "relX": 20,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": -17,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": -17,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "WH",
+          "relX": 23,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BK",
+          "relX": 23,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "NPN NO+NC",
+          "relX": 33,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    },
+    "custom_photo_emitter_2w": {
+      "name": "Photoelectric Emitter (Through-beam) 2-Wire",
+      "prefix": "B",
+      "value": " ",
+      "pathData": [
+        {
+          "d": "M -15 -15 L 15 -15 L 15 15 L -15 15 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -10 L 10 0 L 0 10 L -10 0 Z",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 -2.5 L 6 -2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 6 -2.5 L 3.81 -3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 6 -2.5 L 3.81 -1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M -4 2.5 L 6 2.5",
+          "dash": "solid"
+        },
+        {
+          "d": "M 6 2.5 L 3.81 1.3",
+          "dash": "solid"
+        },
+        {
+          "d": "M 6 2.5 L 3.81 3.7",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 -20 L 0 -15",
+          "dash": "solid"
+        },
+        {
+          "d": "M 0 15 L 0 20",
+          "dash": "solid"
+        }
+      ],
+      "pins": [
+        {
+          "id": "BN",
+          "relX": 0,
+          "relY": -20,
+          "rotation": 90
+        },
+        {
+          "id": "BU",
+          "relX": 0,
+          "relY": 20,
+          "rotation": 90
+        }
+      ],
+      "texts": [
+        {
+          "text": "BN",
+          "relX": 3,
+          "relY": -25,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "BU",
+          "relX": 3,
+          "relY": 20,
+          "fontSize": 12,
+          "rotation": 0
+        },
+        {
+          "text": "Emitter",
+          "relX": 18,
+          "relY": 4,
+          "fontSize": 9,
+          "rotation": 0
+        }
+      ],
+      "library": "Sensors"
+    }
+  }
+}

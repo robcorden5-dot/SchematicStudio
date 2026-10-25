@@ -1,0 +1,19 @@
+{
+  "name": "schematicstudio-desktop",
+  "version": "0.1.1",
+  "private": true,
+  "description": "SchematicStudio desktop app (Tauri). Wraps the website's editor; the website itself is not changed.",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "serve": "node scripts/serve.mjs",
+    "dev": "node scripts/sync.mjs && tauri dev",
+    "build": "node scripts/sync.mjs && tauri build",
+    "build:ci": "node scripts/vendor-konva.mjs && tauri build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "konva": "^9.3.0"
+  }
+}
